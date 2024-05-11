@@ -1,0 +1,26 @@
+[
+    {
+        "codigo": "1",
+        "nombre": "Internet basico",
+        "caracteristicas": "100 gb de velocidad",
+        "precio": "80000"
+    },
+    {
+        "codigo": "2",
+        "nombre": "Internet de fibra optica",
+        "caracteristicas": "500 gb de velocidad",
+        "precio": "100000"
+    },
+    {
+        "codigo": "3",
+        "nombre": "Plan pospago",
+        "caracteristicas": "minutos ilimitados e internet ilimitado",
+        "precio": "50000"
+    },
+    {
+        "codigo": "4",
+        "nombre": "Plan prepago",
+        "caracteristicas": "minutos ilimitados",
+        "precio": "30000"
+    }
+]

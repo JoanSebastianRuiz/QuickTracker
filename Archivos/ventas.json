@@ -1,0 +1,18 @@
+[
+    {
+        "documento": "1095837983",
+        "departamento": "Santander",
+        "ciudad": "Floridablanca",
+        "hora": "15:00:00",
+        "fecha": "2020-03-23",
+        "servicio": "Plan pospago"
+    },
+    {
+        "documento": "65114558",
+        "departamento": "Cundinamarca",
+        "ciudad": "Bogota",
+        "hora": "08:00:00",
+        "fecha": "2022-02-25",
+        "servicio": "Plan prepago"
+    }
+]
