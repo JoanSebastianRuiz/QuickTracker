@@ -50,7 +50,3 @@ def menu_pqr():
     print("5. Salir")
     print("")
 
-def socilitar_opcion():
-    opcion=int(input("Ingrese el numero de la opcion que desea realizar: "))
-    print("")
-    return opcion

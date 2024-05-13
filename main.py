@@ -67,11 +67,13 @@ Dicho esto, se plantea la creación del sistema mencionado con las siguientes fu
         """
         
 from datos import *
-from operaciones.operacionesProductos import *
-from operaciones.operacionesClientes import *
-from operaciones.operacionesServicios import *
-from operaciones.operacionesVentas import *
-from operaciones.operacionesPQR import *
+from validaciones import *
+from operaciones.productos import *
+from operaciones.clientes import *
+from operaciones.servicios import *
+from operaciones.ventas import *
+from operaciones.pqr import *
+from operaciones.excepciones import *
 from menus import *
 
 

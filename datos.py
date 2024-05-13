@@ -5,7 +5,8 @@ RUTA_DATOS_SERVICIOS="Archivos/servicios.json"
 RUTA_DATOS_PRODUCTOS="Archivos/productos.json"
 RUTA_DATOS_VENTAS="Archivos/ventas.json"
 RUTA_DATOS_PQR="Archivos/pqr.json"
-RUTA_DATOS_REPORTES="Archivos/reportes.txt"
+
+RUTA_DATOS_EXCEPCIONES="Archivos/excepciones.txt"
 
 LISTA_CATEGORIA_CLIENTE=["nuevo","regular", "leal"]
 LISTA_PQR=["consulta de servicio al cliente", "reclamacion", "sugerencia"]

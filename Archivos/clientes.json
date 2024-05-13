@@ -1,29 +1,11 @@
 [
     {
-        "documento": "63325117",
-        "nombre": "Rosalba",
-        "departamento": "Sant",
-        "ciudad": "Buc",
-        "direccion": "Calle",
-        "telefono": "3052362311",
-        "categoria_cliente": "nuevo"
-    },
-    {
         "documento": "1095837983",
-        "nombre": "Joan Ruiz",
+        "nombre": "Joan Sebastian Ruiz",
         "departamento": "Santander",
-        "ciudad": "Floridablanca",
-        "direccion": "Calle 45\u00b787-56",
-        "telefono": "3052451223",
-        "categoria_cliente": "regular"
-    },
-    {
-        "documento": "65114558",
-        "nombre": "Manuela Orduz",
-        "departamento": "Cundinamarca",
-        "ciudad": "Bogota",
-        "direccion": "Carrera 85#87-98",
-        "telefono": "3102547889",
-        "categoria_cliente": "leal"
+        "ciudad": "Bucaramanga",
+        "direccion": "Calle 100#33A-13",
+        "telefono": "3053724006",
+        "categoria_cliente": "nuevo"
     }
 ]
