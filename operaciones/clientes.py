@@ -55,7 +55,7 @@ def agregar_cliente(datos):
         while bandera==False:
             imprimir_opciones_categoria_cliente()
             posicion_categoria=socilitar_opcion()
-            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
+            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(posicion_categoria)==True and validar_contiene_numeros(posicion_categoria)==True:
                 bandera=True
             elif posicion_categoria<1 or posicion_categoria>len(LISTA_CATEGORIA_CLIENTE):
                 print("Numero de opcion fuera de rango")
@@ -68,6 +68,7 @@ def agregar_cliente(datos):
     
     else:
         print("El documento ya esta registrado en la lista de clientes")
+        return datos
 
   
 def leer_clientes(datos):
@@ -127,7 +128,7 @@ def actualizar_cliente(datos):
         while bandera==False:
             imprimir_opciones_categoria_cliente()
             posicion_categoria=socilitar_opcion()
-            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
+            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(posicion_categoria)==True and validar_contiene_numeros(posicion_categoria)==True:
                 bandera=True
             elif posicion_categoria<1 or posicion_categoria>len(LISTA_CATEGORIA_CLIENTE):
                 print("Numero de opcion fuera de rango")
@@ -138,7 +139,7 @@ def actualizar_cliente(datos):
             
     else:
         print("El documento ingresado no se encuentra registrado en la lista de clientes")
-    
+        return datos
 
 
 def eliminar_cliente(datos):
@@ -156,7 +157,7 @@ def eliminar_cliente(datos):
         return datos
     else:
         print("El documento ingresado no se encuentra registrado en la lista de clientes")
-    
+        return datos
 
 def imprimir_opciones_categoria_cliente():  
     print("Opciones de categoria de cliente: ")

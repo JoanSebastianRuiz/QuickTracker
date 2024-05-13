@@ -154,7 +154,8 @@ while bandera==0:
                 ventas_ubicacion_geografica(datos)
             elif opcion==5:
                 bandera2=1
-        subir_datos_json(RUTA_DATOS_VENTAS,datos_subir)
+            subir_datos_json(RUTA_DATOS_VENTAS,datos_subir)
+            
     elif opcion==5:
         while bandera2==0:
             menu_pqr()
@@ -163,7 +164,7 @@ while bandera==0:
             datos_subir=datos
             if opcion==1:
                 datos_subir=registrar_pqr(datos)
-            elif opcion==5:
+            elif opcion==3:
                 bandera2=1
         subir_datos_json(RUTA_DATOS_PQR, datos_subir)    
 

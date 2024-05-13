@@ -62,7 +62,7 @@ def agregar_producto(datos):
     
     else:
         print("El codigo ingresado ya se encuentra registrado en la lista de productos")
-
+        return datos
 
 def eliminar_producto(datos):
     while bandera==False:
@@ -78,7 +78,7 @@ def eliminar_producto(datos):
         return datos
     else:
         print("El codigo ingresado no se encuentra registrado en la lista de productos")
-
+        return datos
 
 def actualizar_producto(datos):
     bandera=False
@@ -132,18 +132,16 @@ def actualizar_producto(datos):
     
     else:
         print("El codigo ingresado no se encuentra registrado en la lista de productos")
-
+        return datos
 
 def leer_productos(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                print(f"{llave}: ",end="")
+                print(f"{llave}:")
                 for i in range(len(valor)):
-                    if i==len(valor)-1:
-                        print(f"{valor[i]}")
-                    else:
-                        print(f"{valor[i]}, ", end="")
+                    print(f"-{valor[i]}")
+                    
             else:
                 print(f"{llave}: {valor}")
         print("")

@@ -47,6 +47,6 @@ def menu_pqr():
     print("Menu pqr:")
     print("1. Registrar PQR")
     print("2. Listar PQR")
-    print("5. Salir")
+    print("3. Salir")
     print("")
 

@@ -21,7 +21,7 @@ def validar_contiene_letras(cadena):
     return True
 
 def validar_contiene_numeros(cadena):
-    if cadena.isdigit()==True:
+    if str(cadena).isdigit()==True:
         return True
     else:
         print("El dato solicitado debe contener solo numeros")
@@ -37,14 +37,14 @@ def socilitar_opcion():
     print("")
     return int(opcion)
 
-def verificar_existencia_valor(datos,llave,documento):
+def verificar_existencia_valor(datos,llave,valor):
     for diccionario in datos:
-        if diccionario[llave]==documento:
+        if diccionario[llave]==valor:
             return True
     return False
 
-def ubicacion_valor(datos,llave,documento):
+def ubicacion_valor(datos,llave,valor):
     for diccionario in datos:
-        if diccionario[llave]==documento:
+        if diccionario[llave]==valor:
             return diccionario
     

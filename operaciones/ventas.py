@@ -12,59 +12,102 @@
 
 from datetime import *
 from datos import *
-from menus import socilitar_opcion
+from validaciones import *
 
 
 def registrar_venta(datos):
     venta={}
-    bandera=0
-    documento_encontrado=False
-    documento=input("Ingrese el documento del cliente: ")
     datos_clientes=cargar_datos_json(RUTA_DATOS_CLIENTES)
+    bandera=False
+    
+    while bandera==False:
+        documento=input("Ingrese el documento del cliente con el que que va a registrar la venta: ")
+        if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
+            bandera=True
+    bandera=False
+    
+    if verificar_existencia_valor(datos_clientes,"documento",documento)==True:
+        venta["documento"]=documento
+        
+        fecha_actual=datetime.now()
+        venta["fecha"]=fecha_actual.strftime("%d-%m-%Y")
+        venta["hora"]=fecha_actual.strftime("%H:%M")
 
-    for diccionario in datos_clientes:
-        if diccionario["documento"]==documento:
-            documento_encontrado=True
-            venta["documento"]=documento
-            datos_cliente=cargar_datos_json(RUTA_DATOS_CLIENTES)
-            for diccionario in datos_cliente:
-                if diccionario["documento"]==documento:
-                    venta["departamento"]=diccionario["departamento"]
-                    venta["ciudad"]=diccionario["ciudad"]
-                    break
+        while bandera==False:
+            departamento=input("Ingrese el departamento de la venta: ")
+            if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
+                bandera=True
+        bandera=False
+        venta["departamento"]=departamento
+        
+        while bandera==False:
+            ciudad=input("Ingrese la ciudad de la venta: ")
+            if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
+                bandera=True
+        bandera=False    
+        venta["ciudad"]=ciudad
 
-            objeto_hora=datetime.strptime(input("Ingrese la hora: "), "%H:%M")
-            venta["hora"]=str(objeto_hora.time())
-            objeto_fecha=datetime.strptime(input("Ingrese la fecha: "), "%d-%m-%Y")
-            venta["fecha"]=str(objeto_fecha.date())
+        while bandera==False:
+            imprimir_opciones_venta()
+            opcion_venta=socilitar_opcion()
+            if opcion_venta>=1 and opcion_venta<=2 and validar_contiene_contenido(opcion_venta)==True and validar_contiene_numeros(opcion_venta)==True:
+                bandera=True
+            elif opcion_venta<1 or opcion_venta>2:
+                print("Numero de opcion fuera de rango")
+        bandera=False
 
-            while bandera==0:
-                print("Opciones de venta: ")
-                print("1. Servicio")
-                print("2. Producto")
-                opcion=int(input("Ingrese la opcion de la venta que desea realizar: "))
-                if opcion==1 or opcion==2:
-                    bandera=1
-
-            if opcion==1:
+        if opcion_venta==1:
+            datos_servicios=cargar_datos_json(RUTA_DATOS_SERVICIOS)
+            venta["tipo de venta"]="servicio"
+                
+            while bandera==False:
                 print("Opciones de servicio: ")
-                imprimir_lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_SERVICIOS), "nombre")
-                posicion_servicio=int(input("Seleccione el servicio que compro el cliente: "))-1
-                venta["servicio"]=lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_SERVICIOS), "nombre")[posicion_servicio]
-
-            elif opcion==2:
+                imprimir_lista_valores_llave_json(datos_servicios, "nombre")
+                posicion_servicio=socilitar_opcion()
+                if posicion_servicio>=1 and posicion_servicio<=len(lista_valores_llave_json(datos_servicios,"nombre")) and validar_contiene_contenido(posicion_servicio)==True and validar_contiene_numeros(posicion_servicio)==True:
+                    bandera=True
+                elif posicion_servicio<1 or posicion_servicio>len(lista_valores_llave_json(datos_servicios,"nombre")):
+                    print("Numero de opcion fuera de rango")
+                    
+            bandera=False
+            
+            nombre_servicio=lista_valores_llave_json(datos_servicios, "nombre")[posicion_servicio-1]
+            venta["articulo"]=nombre_servicio
+            diccionario=ubicacion_valor(datos_servicios,"nombre",nombre_servicio)
+            diccionario["clientes"].append(documento)
+            venta["valor"]=diccionario["precio"]
+            subir_datos_json(RUTA_DATOS_SERVICIOS ,datos_servicios)
+            
+        elif opcion_venta==2:
+            datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
+            venta["tipo de venta"]="producto"
+            
+            while bandera==False:
                 print("Opciones de producto: ")
-                imprimir_lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_PRODUCTOS), "nombre")
-                posicion_producto=int(input("Seleccione el producto que compro el cliente: "))-1
-                venta["producto"]=lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_PRODUCTOS), "nombre")[posicion_producto]
-            datos.append(venta)
-            print("La venta se ha registrado correctamente")
-            break
-
-    if documento_encontrado==False:
+                imprimir_lista_valores_llave_json(datos_productos, "nombre")
+                posicion_producto=socilitar_opcion()
+                if posicion_producto>=1 and posicion_producto<=len(lista_valores_llave_json(datos_productos,"nombre")) and validar_contiene_contenido(posicion_producto)==True and validar_contiene_numeros(posicion_producto)==True:
+                    bandera=True
+                elif posicion_producto<1 or posicion_producto>len(lista_valores_llave_json(datos_productos,"nombre")):
+                    print("Numero de opcion fuera de rango")
+                    
+            bandera=False
+            
+            nombre_producto=lista_valores_llave_json(datos_productos, "nombre")[posicion_producto-1]
+            venta["articulo"]=nombre_producto
+            diccionario=ubicacion_valor(datos_productos,"nombre",nombre_producto)
+            diccionario["clientes"].append(documento)
+            venta["valor"]=diccionario["precio"]
+            subir_datos_json(RUTA_DATOS_PRODUCTOS,datos_productos)      
+            
+        datos.append(venta)
+        print("La venta se ha registrado correctamente")
+        print(venta)
+        return datos
+            
+    else:
         print("El documento ingresado no se encuentra registrado en la lista de clientes")
-
-    return datos
+        return datos
 
 #La empresa no puede identificar patrones de uso de servicios, preferencias de los clientes o áreas geográficas con mayor demanda
 def ventas_sevicios_totales(datos):
@@ -130,4 +173,9 @@ def ventas_ubicacion_geografica(datos):
         print("")
     print("")
 
+
+def imprimir_opciones_venta():
+    print("Opciones de venta: ")
+    print("1. Servicio")
+    print("2. Producto")
 

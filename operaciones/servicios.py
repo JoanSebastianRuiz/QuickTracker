@@ -49,7 +49,7 @@ def agregar_servicio(datos):
     
     else:
         print("El codigo ingresado ya se encuentra registrado en la lista de servicios")
-
+        return datos
 
 def eliminar_servicio(datos):
     while bandera==False:
@@ -65,7 +65,7 @@ def eliminar_servicio(datos):
         return datos
     else:
         print("El codigo ingresado no se encuentra registrado en la lista de servicios")
-
+        return datos
 
 def actualizar_servicio(datos):
     bandera=False
@@ -105,18 +105,16 @@ def actualizar_servicio(datos):
     
     else:
         print("El codigo ingresado no se encuentra registrado en la lista de servicios")
-
+        return datos
 
 def leer_servicios(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                print(f"{llave}: ",end="")
+                print(f"{llave}:")
                 for i in range(len(valor)):
-                    if i==len(valor)-1:
-                        print(f"{valor[i]}")
-                    else:
-                        print(f"{valor[i]}, ", end="")
+                    print(f"-{valor[i]}")
+                    
             else:
                 print(f"{llave}: {valor}")
         print("")
