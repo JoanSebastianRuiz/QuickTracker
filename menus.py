@@ -6,7 +6,8 @@ def menu_principal():
     print("4. Ventas")
     print("5. PQR")
     print("6. Analisis ventas")
-    print("7. Salir")
+    print("7. Promociones")
+    print("8. Salir")
     print("")
 
 def menu_clientes():
@@ -53,8 +54,16 @@ def menu_pqr():
 
 def menu_analisis_ventas():
     print("Menu analisis ventas:")
-    print("1. Ventas por articulo")
-    print("2. Ventas totales")
-    print("3. Salir")
+    print("1. Numero de ventas totales")
+    print("2. Numero de ventas por articulo")
+    print("3. Numero de ventas por ubicacion geografica")
+    print("4. Numero de ventas por rango de edad")
+    print("5. Salir")
+    print("")
+
+def menu_promociones():
+    print("Menu promociones:")
+    print("1. Promocion segun rango de edad")
+    print("4. Salir")
     print("")
 

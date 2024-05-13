@@ -10,6 +10,8 @@ RUTA_DATOS_EXCEPCIONES="Archivos/excepciones.txt"
 
 LISTA_CATEGORIA_CLIENTE=["nuevo","regular", "leal"]
 LISTA_PQR=["consulta de servicio al cliente", "reclamacion", "sugerencia"]
+LISTA_EDADES=["Adolescentes (menor de 20 años)", "Adultos jóvenes (20-39 años)", "Adultos de mediana edad (40-60 años)", "Adultos mayores (mayor de 60 años)"]
+
 
 def cargar_datos_json(ruta):
     file=open(ruta)

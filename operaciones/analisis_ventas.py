@@ -41,40 +41,55 @@ def imprimir_ventas_totales(datos):
     print("")
     
     
-def ventas_ubicacion_geografica(datos):
-    print("Analizar las ventas de: ")
-    print("1. Servicios")
-    print("2. Productos")
+def numero_ventas_ubicacion(datos):
+    bandera=False
+    datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
+    datos_servicios=cargar_datos_json(RUTA_DATOS_SERVICIOS)
+    
+    while bandera==False:
+        print("Opciones de lectura:")
+        print("1. Numero de ventas por servicios ")
+        print("2. Numero de ventas por productos")
 
-    numero_opcion=socilitar_opcion()
-    if numero_opcion==1:
-        opcion="servicio"
-        lista_productos_o_servicios=lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_SERVICIOS),"nombre")
-    elif numero_opcion==2:
-        opcion="producto"
-        lista_productos_o_servicios=lista_valores_llave_json(cargar_datos_json(RUTA_DATOS_PRODUCTOS),"nombre")
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=2 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>2:
+            print("Numero de opcion fuera de rango")  
+    bandera=False
+    
+    if opcion==1:
+        lista_productos_o_servicios=lista_valores_llave_json(datos_servicios, "nombre")
+    elif opcion==2:
+        lista_productos_o_servicios=lista_valores_llave_json(datos_productos, "nombre")
 
-    print("Analizar las ventas segun: ")
-    print("1. Departamento")
-    print("2. Ciudad")
+    while bandera==False:
+        print("Analizar el numerode ventas segun: ")
+        print("1. Departamento")
+        print("2. Ciudad")
 
-    numero_opcion=socilitar_opcion()
-    if numero_opcion==1:
-        opcion2="departamento"
-    elif numero_opcion==2:
-        opcion2="ciudad"
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=2 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>2:
+            print("Numero de opcion fuera de rango")  
 
-    lista_valores_opcion=lista_valores_llave_json(datos,opcion2)
+    if opcion==1:
+        tipo_analisis="departamento"
+    elif opcion==2:
+        tipo_analisis="ciudad"
 
-    for valor_opcion in lista_valores_opcion:
+    lista_valores_analisis=lista_valores_llave_json(datos,tipo_analisis)
+
+    for nombre_lugar in lista_valores_analisis:
         cont_servicios_o_productos=[]
         for nombre_servicio_o_producto in lista_productos_o_servicios:
             cont=0
             for diccionario in datos:
-                if diccionario[opcion]==nombre_servicio_o_producto and diccionario[opcion2]==valor_opcion:
+                if diccionario["articulo"]==nombre_servicio_o_producto and diccionario[tipo_analisis]==nombre_lugar:
                     cont+=1
             cont_servicios_o_productos.append(cont)
-        print(f"{valor_opcion}:")
+        print(f"{nombre_lugar}:")
         for i in range(len(cont_servicios_o_productos)):
             print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
         print("")
@@ -110,4 +125,101 @@ def ventas_totales(lista, datos):
     for i in range(len(cont_opcion)):
         cont_total+=cont_opcion[i]
     return cont_total
+
+
+def numero_ventas_rango_edad(datos):
+    bandera=False
+    datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
+    datos_servicios=cargar_datos_json(RUTA_DATOS_SERVICIOS)
+    datos_clientes=cargar_datos_json(RUTA_DATOS_CLIENTES)
+    
+    while bandera==False:
+        print("Opciones de lectura:")
+        print("1. Numero de ventas por servicios ")
+        print("2. Numero de ventas por productos")
+
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=2 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>2:
+            print("Numero de opcion fuera de rango")  
+    bandera=False
+    
+    if opcion==1:
+        lista_productos_o_servicios=lista_valores_llave_json(datos_servicios, "nombre")
+    elif opcion==2:
+        lista_productos_o_servicios=lista_valores_llave_json(datos_productos, "nombre")
+
+    while bandera==False:
+        print("Ver compras hechas por: ")
+        print("1. Adolescentes (menor de 20 años)")
+        print("2. Adultos jóvenes (20-39 años)")
+        print("3. Adultos de mediana edad (40-60 años)")
+        print("4. Adultos mayores (mayor de 60 años)")
+
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=4 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>4:
+            print("Numero de opcion fuera de rango")  
+    
+    if opcion==1:
+        cont_servicios_o_productos=[]
+        for nombre_servicio_o_producto in lista_productos_o_servicios:
+            cont=0
+            for diccionario in datos:
+                documento=diccionario["documento"]
+                diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])<20:
+                    cont+=1
+            cont_servicios_o_productos.append(cont)
+        print(f"{LISTA_EDADES[opcion-1]}:")
+        for i in range(len(cont_servicios_o_productos)):
+            print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
+        print("")
+    
+    elif opcion==2:
+        cont_servicios_o_productos=[]
+        for nombre_servicio_o_producto in lista_productos_o_servicios:
+            cont=0
+            for diccionario in datos:
+                documento=diccionario["documento"]
+                diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=20 and int(diccionario_persona["edad"])<=39:
+                    cont+=1
+            cont_servicios_o_productos.append(cont)
+        print(f"{LISTA_EDADES[opcion-1]}:")
+        for i in range(len(cont_servicios_o_productos)):
+            print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
+        print("")
+    
+    elif opcion==3:
+        cont_servicios_o_productos=[]
+        for nombre_servicio_o_producto in lista_productos_o_servicios:
+            cont=0
+            for diccionario in datos:
+                documento=diccionario["documento"]
+                diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=40 and int(diccionario_persona["edad"])<=60:
+                    cont+=1
+            cont_servicios_o_productos.append(cont)
+        print(f"{LISTA_EDADES[opcion-1]}:")
+        for i in range(len(cont_servicios_o_productos)):
+            print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
+        print("")
+    
+    elif opcion==4:
+        cont_servicios_o_productos=[]
+        for nombre_servicio_o_producto in lista_productos_o_servicios:
+            cont=0
+            for diccionario in datos:
+                documento=diccionario["documento"]
+                diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>60:
+                    cont+=1
+            cont_servicios_o_productos.append(cont)
+        print(f"{LISTA_EDADES[opcion-1]}:")
+        for i in range(len(cont_servicios_o_productos)):
+            print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
+        print("")
     

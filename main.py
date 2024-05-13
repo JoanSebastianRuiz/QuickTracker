@@ -76,6 +76,7 @@ from operaciones.pqr import *
 from operaciones.excepciones import *
 from menus import *
 from operaciones.analisis_ventas import *
+from operaciones.promociones import *
 
 
 bandera=0
@@ -175,13 +176,28 @@ while bandera==0:
             datos=cargar_datos_json(RUTA_DATOS_VENTAS)
             
             if opcion==1:
-                numero_ventas_articulo(datos)
-            elif opcion==2:
                 imprimir_ventas_totales(datos)
+            elif opcion==2:
+                numero_ventas_articulo(datos)
             elif opcion==3:
+                numero_ventas_ubicacion(datos)
+            elif opcion==4:
+                numero_ventas_rango_edad(datos)  
+            elif opcion==5:
                 bandera2=1
-
+                
     elif opcion==7:
+            while bandera2==0:
+                menu_promociones()
+                opcion=socilitar_opcion()
+                datos=cargar_datos_json(RUTA_DATOS_VENTAS)
+                
+                if opcion==1:
+                    promocion_persona_sin_registrar(datos)
+               
+                elif opcion==4:
+                    bandera2=1
+    elif opcion==8:
         bandera=1
 
 
