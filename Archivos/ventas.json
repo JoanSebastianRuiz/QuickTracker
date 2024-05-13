@@ -20,5 +20,27 @@
         "tipo de venta": "servicio",
         "articulo": "Plan prepago",
         "valor": "30000"
+    },
+    {
+        "codigo": 3,
+        "documento": "1095837983",
+        "fecha": "13-05-2024",
+        "hora": "10:57",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "tipo de venta": "servicio",
+        "articulo": "Plan prepago",
+        "valor": "30000"
+    },
+    {
+        "codigo": 4,
+        "documento": "63325117",
+        "fecha": "13-05-2024",
+        "hora": "10:59",
+        "departamento": "Santander",
+        "ciudad": "Floridablanca",
+        "tipo de venta": "servicio",
+        "articulo": "Internet de fibra optica",
+        "valor": "100000"
     }
 ]

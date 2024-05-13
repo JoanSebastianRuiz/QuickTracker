@@ -5,7 +5,8 @@ def menu_principal():
     print("3. Servicios")
     print("4. Ventas")
     print("5. PQR")
-    print("6. Salir")
+    print("6. Analisis ventas")
+    print("7. Salir")
     print("")
 
 def menu_clientes():
@@ -47,6 +48,13 @@ def menu_pqr():
     print("Menu pqr:")
     print("1. Registrar PQR")
     print("2. Listar PQR")
+    print("3. Salir")
+    print("")
+
+def menu_analisis_ventas():
+    print("Menu analisis ventas:")
+    print("1. Ventas por articulo")
+    print("2. Ventas totales")
     print("3. Salir")
     print("")
 

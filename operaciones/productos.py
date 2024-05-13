@@ -11,19 +11,13 @@ def agregar_producto(datos):
     bandera=False
     
     while bandera==False:
-        codigo=input("Ingrese el codigo del producto a agregar:")
-        if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
+        nombre=input("Ingrese el nombre del producto a agregar: ") 
+        if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
             bandera=True
     bandera=False
     
-    if verificar_existencia_valor(datos,"codigo",codigo)==False:    
-        producto["codigo"]=codigo
-        
-        while bandera==False:
-            nombre=input("Ingrese el nombre del producto a agregar: ") 
-            if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
-                bandera=True
-        bandera=False
+    if verificar_existencia_valor(datos,"nombre",nombre)==False:    
+        producto["codigo"]=len(datos)+1
         producto["nombre"]= nombre
         
         while bandera==False:
@@ -61,7 +55,7 @@ def agregar_producto(datos):
         return datos
     
     else:
-        print("El codigo ingresado ya se encuentra registrado en la lista de productos")
+        print("El nombre ingresado ya se encuentra registrado en la lista de productos")
         return datos
 
 def eliminar_producto(datos):

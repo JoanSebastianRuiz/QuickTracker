@@ -12,19 +12,13 @@ def agregar_servicio(datos):
     bandera=False
     
     while bandera==False:
-        codigo=input("Ingrese el codigo del servicio a agregar:")
-        if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
+        nombre=input("Ingrese el nombre del servicio a agregar: ") 
+        if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
             bandera=True
     bandera=False
     
-    if verificar_existencia_valor(datos,"codigo",codigo)==False:    
-        servicio["codigo"]=codigo
-        
-        while bandera==False:
-            nombre=input("Ingrese el nombre del servicio a agregar: ") 
-            if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
-                bandera=True
-        bandera=False
+    if verificar_existencia_valor(datos,"nombre",nombre)==False:    
+        servicio["codigo"]=len(datos)+1
         servicio["nombre"]= nombre
         
         while bandera==False:
@@ -48,7 +42,7 @@ def agregar_servicio(datos):
         return datos
     
     else:
-        print("El codigo ingresado ya se encuentra registrado en la lista de servicios")
+        print("El nombre ingresado ya se encuentra registrado en la lista de servicios")
         return datos
 
 def eliminar_servicio(datos):

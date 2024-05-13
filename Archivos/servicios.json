@@ -16,7 +16,9 @@
         "nombre": "Internet de fibra optica",
         "caracteristicas": "500 gb de velocidad",
         "precio": "100000",
-        "clientes": []
+        "clientes": [
+            "63325117"
+        ]
     },
     {
         "codigo": "3",
@@ -35,7 +37,8 @@
         "caracteristicas": "minutos ilimitados",
         "precio": "30000",
         "clientes": [
-            "63325117"
+            "63325117",
+            "1095837983"
         ]
     }
 ]
