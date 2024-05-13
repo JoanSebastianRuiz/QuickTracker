@@ -1,0 +1,1 @@
+13-05-2024 00:51 Excepcion al intentar agregar fecha de nacimiento al cliente "skjfsld"

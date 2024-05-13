@@ -1,7 +1,8 @@
 from datos import *
 from operaciones.servicios import *
 from validaciones import *
-
+from datetime import *
+from operaciones.excepciones import *
 
 def agregar_cliente(datos):
     cliente={}
@@ -16,14 +17,31 @@ def agregar_cliente(datos):
     if verificar_existencia_valor(datos,"documento",documento)==False:
         cliente["documento"]=documento
         
-        
         while bandera==False:
             nombre=input("Ingrese el nombre del cliente: ")
             if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
                 bandera=True
         bandera=False
         cliente["nombre"]=nombre
+
+        fecha_actual=datetime.now().strftime("%d-%m-%Y")
+        fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
+        while bandera==False:
+            fecha_nacimiento=input("Ingrese la fecha de nacimiento del cliente (formato dd-mm-aaaa): ")
+            if validar_contiene_contenido(fecha_nacimiento)==True:
+                try:
+                    fecha_nacimiento_formato=datetime.strptime(fecha_nacimiento,"%d-%m-%Y")
+                    edad = fecha_actual_formato.year - fecha_nacimiento_formato.year - int((fecha_actual_formato.month, fecha_actual_formato.day) < (fecha_nacimiento_formato.month, fecha_nacimiento_formato.day))
+                    edad=str(edad)
+                    bandera=True
+                except Exception:
+                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento al cliente "+"\""+fecha_nacimiento+"\"")
+                    print("Dato erroneo")
         
+        bandera=False
+        cliente["fecha nacimiento"]=fecha_nacimiento
+        cliente["edad"] =edad   
+            
         while bandera==False:
             departamento=input("Ingrese el departamento del cliente: ")
             if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
@@ -82,7 +100,7 @@ def actualizar_cliente(datos):
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del usuario que quiere actualizar: ")
+        documento=input("Ingrese el documento del cliente que quiere actualizar: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True
     bandera=False
@@ -146,7 +164,7 @@ def eliminar_cliente(datos):
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del usuario que quiere actualizar: ")
+        documento=input("Ingrese el documento del cliente que quiere eliminar: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True   
     

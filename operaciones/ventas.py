@@ -14,6 +14,7 @@ from datetime import *
 from datos import *
 from validaciones import *
 
+codigo_venta=0
 
 def registrar_venta(datos):
     venta={}
@@ -27,8 +28,10 @@ def registrar_venta(datos):
     bandera=False
     
     if verificar_existencia_valor(datos_clientes,"documento",documento)==True:
+        global codigo_venta
+        codigo_venta+=1
+        venta["codigo"]=codigo_venta
         venta["documento"]=documento
-        
         fecha_actual=datetime.now()
         venta["fecha"]=fecha_actual.strftime("%d-%m-%Y")
         venta["hora"]=fecha_actual.strftime("%H:%M")
@@ -107,6 +110,58 @@ def registrar_venta(datos):
             
     else:
         print("El documento ingresado no se encuentra registrado en la lista de clientes")
+        return datos
+
+
+def leer_ventas(datos):
+    bandera=False
+    while bandera==False:
+        print("Opciones de lectura:")
+        print("1. Ventas de servicios ")
+        print("2. Ventas de productos")
+        print("3. Ventas totales")
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=3 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>3:
+            print("Numero de opcion fuera de rango")   
+    
+    if opcion==1:
+        for diccionario in datos:
+            if diccionario["tipo de venta"]=="servicio":
+                for llave, valor in diccionario.items():
+                    print(f"{llave}: {valor}")
+                print("")
+                
+    elif opcion==2:
+        for diccionario in datos:
+            if diccionario["tipo de venta"]=="producto":
+                for llave, valor in diccionario.items():
+                    print(f"{llave}: {valor}")
+                print("")
+                
+    elif opcion==3:
+        for diccionario in datos:
+            for llave, valor in diccionario.items():
+                print(f"{llave}: {valor}")
+            print("")        
+
+
+def eliminar_venta(datos):
+    bandera=False
+    
+    while bandera==False:
+        codigo=input("Ingrese el codigo la venta que quiere eliminar: ")
+        if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
+            bandera=True   
+    
+    if verificar_existencia_valor(datos,"codigo",codigo)==True:
+        diccionario=ubicacion_valor(datos,"codigo",codigo)
+        datos.remove(diccionario)
+        print("La venta se ha eliminado correctamente")
+        return datos
+    else:
+        print("El codigo ingresado no se encuentra registrado en la lista de ventas")
         return datos
 
 #La empresa no puede identificar patrones de uso de servicios, preferencias de los clientes o áreas geográficas con mayor demanda

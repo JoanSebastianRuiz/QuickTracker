@@ -1,12 +1,24 @@
 [
     {
+        "codigo": 1,
         "documento": "1095837983",
-        "fecha": "12-05-2024",
-        "hora": "23:23",
+        "fecha": "13-05-2024",
+        "hora": "01:21",
         "departamento": "Santander",
-        "ciudad": "Floridablanca",
+        "ciudad": "Bucaramanga",
         "tipo de venta": "servicio",
         "articulo": "Internet basico",
         "valor": "80000"
+    },
+    {
+        "codigo": 2,
+        "documento": "63325117",
+        "fecha": "13-05-2024",
+        "hora": "01:21",
+        "departamento": "Santander",
+        "ciudad": "Giron",
+        "tipo de venta": "servicio",
+        "articulo": "Plan prepago",
+        "valor": "30000"
     }
 ]

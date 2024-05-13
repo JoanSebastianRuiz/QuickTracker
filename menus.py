@@ -38,9 +38,9 @@ def menu_servicios():
 def menu_ventas():
     print("Menu ventas:")
     print("1. Registrar venta")
-    print("2. Ver ventas totales")
-    print("3. Ver ventas segun ubicacion geografica")
-    print("5. Salir")
+    print("2. Eliminar venta")
+    print("3. Listar ventas")   
+    print("4. Salir")
     print("")
 
 def menu_pqr():

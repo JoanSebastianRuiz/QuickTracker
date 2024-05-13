@@ -149,10 +149,10 @@ while bandera==0:
             if opcion==1:
                 datos_subir=registrar_venta(datos)
             elif opcion==2:
-                ventas_sevicios_totales(datos)
+                datos_subir=eliminar_venta(datos)
             elif opcion==3:
-                ventas_ubicacion_geografica(datos)
-            elif opcion==5:
+                leer_ventas(datos)
+            elif opcion==4:
                 bandera2=1
             subir_datos_json(RUTA_DATOS_VENTAS,datos_subir)
             
@@ -173,3 +173,10 @@ while bandera==0:
 
 
 
+
+
+
+
+
+
+            

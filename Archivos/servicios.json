@@ -7,6 +7,7 @@
         "clientes": [
             "1095837983",
             "1095837983",
+            "1095837983",
             "1095837983"
         ]
     },
@@ -33,6 +34,8 @@
         "nombre": "Plan prepago",
         "caracteristicas": "minutos ilimitados",
         "precio": "30000",
-        "clientes": []
+        "clientes": [
+            "63325117"
+        ]
     }
 ]

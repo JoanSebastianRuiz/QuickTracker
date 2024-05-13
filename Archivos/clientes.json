@@ -7,5 +7,15 @@
         "direccion": "Calle 100#33A-13",
         "telefono": "3052362311",
         "categoria_cliente": "nuevo"
+    },
+    {
+        "documento": "63325117",
+        "nombre": "Rosalba Angarita",
+        "edad": "44",
+        "departamento": "Santander",
+        "ciudad": "Giron",
+        "direccion": "Calle 23#12-67",
+        "telefono": "3052362311",
+        "categoria_cliente": "regular"
     }
 ]
