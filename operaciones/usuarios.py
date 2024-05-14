@@ -30,7 +30,7 @@ def agregar_usuario(datos):
             if validar_contiene_contenido(contrasena)==True and validar_longitud_contrasena(contrasena)==True:
                 bandera=True
         bandera=False
-        usuario["contrasena"]=nombre
+        usuario["contrasena"]=contrasena
         
         fecha_actual=datetime.now().strftime("%d-%m-%Y")
         fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
@@ -105,90 +105,93 @@ def actualizar_usuario(datos):
     
     if verificar_existencia_valor(datos,"documento",documento)==True:
         diccionario=ubicacion_valor(datos,"documento",documento)
-                
-        while bandera==False:
-            nombre=input("Ingrese el nombre del cliente: ")
-            if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
-                bandera=True
-        bandera=False
-        diccionario["nombre"]=nombre
-        
-        fecha_actual=datetime.now().strftime("%d-%m-%Y")
-        fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
-        while bandera==False:
-            fecha_nacimiento=input("Ingrese la fecha de nacimiento del cliente (formato dd-mm-aaaa): ")
-            if validar_contiene_contenido(fecha_nacimiento)==True:
-                try:
-                    fecha_nacimiento_formato=datetime.strptime(fecha_nacimiento,"%d-%m-%Y")
-                    edad = fecha_actual_formato.year - fecha_nacimiento_formato.year - int((fecha_actual_formato.month, fecha_actual_formato.day) < (fecha_nacimiento_formato.month, fecha_nacimiento_formato.day))
-                    edad=str(edad)
+        if diccionario["rol"]=="empleado":    
+            while bandera==False:
+                nombre=input("Ingrese el nombre del usuario: ")
+                if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
                     bandera=True
-                except Exception:
-                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento al cliente "+"\""+fecha_nacimiento+"\"")
-                    print("Dato erroneo")
-        
-        bandera=False
-        diccionario["fecha nacimiento"]=fecha_nacimiento
-        diccionario["edad"] =edad   
-        
-        while bandera==False:
-            departamento=input("Ingrese el departamento del cliente: ")
-            if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
-                bandera=True
-        bandera=False
-        diccionario["departamento"]
-        
-        while bandera==False:
-            ciudad=input("Ingrese la ciudad del cliente: ")
-            if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
-                bandera=True
-        bandera=False
-        diccionario["ciudad"]=ciudad
-        
-        while bandera==False:
-            direccion=input("Ingrese la direccion del cliente: ")
-            if validar_contiene_contenido(direccion)==True:
-                bandera=True
-        bandera=False                                                     
-        diccionario["direccion"]=direccion
-        
-        while bandera==False:
-            telefono=input("Ingrese el telefono de contacto del cliente:")
-            if validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
-                bandera=True
-        bandera=False                  
-        diccionario["telefono"]=telefono
+            bandera=False
+            diccionario["nombre"]=nombre
 
-        while bandera==False:
-            imprimir_opciones_categoria_cliente()
-            posicion_categoria=socilitar_opcion()
-            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(posicion_categoria)==True and validar_contiene_numeros(posicion_categoria)==True:
-                bandera=True
-            elif posicion_categoria<1 or posicion_categoria>len(LISTA_CATEGORIA_CLIENTE):
-                print("Numero de opcion fuera de rango")
-        diccionario["categoria_cliente"]=LISTA_CATEGORIA_CLIENTE[posicion_categoria-1]
+            while bandera==False:
+                contrasena=input("Ingrese la contraseña del usuario: ")
+                if validar_contiene_contenido(contrasena)==True and validar_longitud_contrasena(contrasena)==True:
+                    bandera=True
+            bandera=False
+            diccionario["contrasena"]=contrasena
 
-        print("El cliente se ha actualizado correctamente")  
-        return datos
+            fecha_actual=datetime.now().strftime("%d-%m-%Y")
+            fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
+            while bandera==False:
+                fecha_nacimiento=input("Ingrese la fecha de nacimiento del usuario (formato dd-mm-aaaa): ")
+                if validar_contiene_contenido(fecha_nacimiento)==True:
+                    try:
+                        fecha_nacimiento_formato=datetime.strptime(fecha_nacimiento,"%d-%m-%Y")
+                        edad = fecha_actual_formato.year - fecha_nacimiento_formato.year - int((fecha_actual_formato.month, fecha_actual_formato.day) < (fecha_nacimiento_formato.month, fecha_nacimiento_formato.day))
+                        edad=str(edad)
+                        bandera=True
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar actualizar fecha de nacimiento del cliente "+"\""+fecha_nacimiento+"\"")
+                        print("Dato erroneo")
             
+            bandera=False
+            diccionario["fecha nacimiento"]=fecha_nacimiento
+            diccionario["edad"] =edad   
+            
+            while bandera==False:
+                departamento=input("Ingrese el departamento del usuario: ")
+                if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
+                    bandera=True
+            bandera=False
+            diccionario["departamento"]
+            
+            while bandera==False:
+                ciudad=input("Ingrese la ciudad del usuario: ")
+                if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
+                    bandera=True
+            bandera=False
+            diccionario["ciudad"]=ciudad
+            
+            while bandera==False:
+                direccion=input("Ingrese la direccion del usuario: ")
+                if validar_contiene_contenido(direccion)==True:
+                    bandera=True
+            bandera=False                                                     
+            diccionario["direccion"]=direccion
+            
+            while bandera==False:
+                telefono=input("Ingrese el telefono de contacto del usuario:")
+                if validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
+                    bandera=True
+            bandera=False                  
+            diccionario["telefono"]=telefono
+
+            print("El usuario se ha actualizado correctamente")  
+            return datos
+        else:
+            print("No tiene permisos para actualizar los datos de administradores")
+    
     else:
-        print("El documento ingresado no se encuentra registrado en la lista de clientes")
+        print("El documento ingresado no se encuentra registrado en la lista de usuarios")
         return datos
 
 
-def eliminar_cliente(datos):
+def eliminar_usuario(datos):
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del cliente que quiere eliminar: ")
+        documento=input("Ingrese el documento del usuario que quiere eliminar: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True   
     
     if verificar_existencia_valor(datos,"documento",documento)==True:
         diccionario=ubicacion_valor(datos,"documento",documento)
-        datos.remove(diccionario)
-        print("El cliente se ha eliminado correctamente")
+        if diccionario["rol"]=="empleado":
+            datos.remove(diccionario)
+            print("El usuario se ha eliminado correctamente")
+        else:
+            print("No tiene permisos para eliminar administradores")
         return datos
     else:
-        print("El documento ingresado no se encuentra registrado en la lista de clientes")
+        print("El documento ingresado no se encuentra registrado en la lista de usuarios")
         return datos

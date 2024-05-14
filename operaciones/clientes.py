@@ -126,7 +126,7 @@ def actualizar_cliente(datos):
                     edad=str(edad)
                     bandera=True
                 except Exception:
-                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento al cliente "+"\""+fecha_nacimiento+"\"")
+                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento del cliente "+"\""+fecha_nacimiento+"\"")
                     print("Dato erroneo")
         
         bandera=False

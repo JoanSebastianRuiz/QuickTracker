@@ -1,5 +1,6 @@
 import json
 
+RUTA_DATOS_USUARIOS="archivos/usuarios.json"
 RUTA_DATOS_CLIENTES="archivos/clientes.json"
 RUTA_DATOS_SERVICIOS="archivos/servicios.json"
 RUTA_DATOS_PRODUCTOS="archivos/productos.json"

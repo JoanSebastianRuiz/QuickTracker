@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "documento": "91218991",
+        "rol": "administrador",
+        "nombre": "Carlos Angarita",
+        "contrasena": "91218991",
+        "fecha nacimiento": "09-04-1970",
+        "edad": "54",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "direccion": "Calle 45#21-65",
+        "telefono": "3056743221"
+    },
+    {
+        "documento": "64332445",
+        "rol": "empleado",
+        "nombre": "Camila Santana",
+        "contrasena": "64332445",
+        "fecha nacimiento": "12-01-1990",
+        "edad": "34",
+        "departamento": "Santander",
+        "ciudad": "Giron",
+        "direccion": "Carrera 43#21-34",
+        "telefono": "3043212334"
+    }
+]

@@ -1,3 +1,26 @@
+def menu_login():
+    print("Bienvenido, seleccione su rol: ")
+    print("1. Administrador")
+    print("2. Empleado")
+    print("3. Salir")
+    print("")
+
+def menu_administrador():
+    print("Bienvenido, estas son las operaciones que puede realizar: ")
+    print("1. Administrar usuarios")
+    print("2. Realizar operaciones con el menu principal")
+    print("3. Salir")
+    print("")
+    
+def menu_usuarios():
+    print("Menu usuarios: ")
+    print("1. Agregar usuario")
+    print("2. Eliminar usuario")
+    print("3. Actualizar usuario")
+    print("4. Listar usuarios")
+    print("5. Salir")
+    print("")
+
 def menu_principal():
     print("Bienvenido, estos son los menus disponibles para realizar operaciones: ")
     print("1. Clientes")
