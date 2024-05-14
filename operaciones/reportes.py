@@ -17,7 +17,7 @@ def generar_reporte_productos(datos):
                     subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
                
             else:
-                cadena=llave+": "+valor
+                cadena=llave+": "+str(valor)
                 subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
                 
         cadena=""
@@ -44,7 +44,7 @@ def generar_reporte_servicios(datos):
                     subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
                     
             else:
-                cadena=llave+": "+valor
+                cadena=llave+": "+str(valor)
                 subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
                 
         cadena=""

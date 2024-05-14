@@ -1,0 +1,26 @@
+codigo: 1
+nombre: Motorola one macro
+marca: Motorola
+precio: 500000
+cantidad: 44
+caracteristicas: Camara macro, pantalla LCD IPS de 6.2 pulgadas, procesador MediaTek Helio P70
+clientes y su cantidad de compras: 
+-1095837983: 1
+
+codigo: 2
+nombre: Samsung galaxy a20
+marca: Samsung
+precio: 700000
+cantidad: 100
+caracteristicas:  pantalla Infinity-V de 6.4 pulgadas, procesador Exynos 7884,  batería de 4,000 mAh
+clientes y su cantidad de compras: 
+
+codigo: 3
+nombre: Xiaomi redmi note 10
+marca: Xiaomi
+precio: 1000000
+cantidad: 149
+caracteristicas: Pantalla AMOLED de 6.43 pulgadas,  batería de 5,000 mAh, procesador Qualcomm Snapdragon 678
+clientes y su cantidad de compras: 
+-63325117: 1
+

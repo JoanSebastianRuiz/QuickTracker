@@ -72,26 +72,37 @@ def personalizacion_persona_registrada(datos):
                     print(f"{llave}: {valor}") 
             print("")
 
-        print("Ademas, estas son las compras que ha realizado el usuario: ")
+        print("Ademas, estas son las compras que ha realizado el cliente: ")
         
-        for diccionario in datos_servicios:
-            for llave, valor in diccionario.items():
-                
-                if llave=="clientes":
-                    cantidad_compras=valor.copy()
-                    valor=set(valor)
-                    valor=list(valor)
-                    for i in range(len(valor)):
-                        if valor[i]==documento:
-                            print(f"-{diccionario["nombre"]}: {cantidad_compras.count(valor[i])}")
-                        
+        if tipo_venta=="servicio":
+            for diccionario in datos_servicios:
+                for llave, valor in diccionario.items():
+                    
+                    if llave=="clientes":
+                        cantidad_compras=valor.copy()
+                        valor=set(valor)
+                        valor=list(valor)
+                        for i in range(len(valor)):
+                            if valor[i]==documento:
+                                print(f"-{diccionario["nombre"]}: {cantidad_compras.count(valor[i])}")
+        elif tipo_venta=="producto":
+            for diccionario in datos_productos:
+                for llave, valor in diccionario.items():
+                    
+                    if llave=="clientes":
+                        cantidad_compras=valor.copy()
+                        valor=set(valor)
+                        valor=list(valor)
+                        for i in range(len(valor)):
+                            if valor[i]==documento:
+                                print(f"-{diccionario["nombre"]}: {cantidad_compras.count(valor[i])}")                
     else:
         print("El documento no esta registrado en la lista de clientes")
     
     print("")
 
 
-def personalizacion_persona_sin_registrarar(datos):
+def personalizacion_persona_sin_registrar(datos):
     bandera=False
     datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
     datos_servicios=cargar_datos_json(RUTA_DATOS_SERVICIOS)

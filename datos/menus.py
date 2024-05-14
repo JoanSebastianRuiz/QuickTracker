@@ -72,8 +72,9 @@ def menu_ventas():
 def menu_pqr():
     print("Menu pqr:")
     print("1. Registrar PQR")
-    print("2. Listar PQR")
-    print("3. Salir")
+    print("2. Eliminar PQR")
+    print("3. Listar PQR")
+    print("4. Salir")
     print("")
 
 def menu_analisis_ventas():

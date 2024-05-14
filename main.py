@@ -168,10 +168,16 @@ def ejecucion_menu_principal():
                         escribir_excepcion("Excepcion al intentar registrar PQR ")
                 elif opcion==2:
                     try:
+                        datos_subir=eliminar_pqr(datos)
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar eliminar PQR ")
+                elif opcion==3:
+                    try:
                         leer_pqr(datos)
                     except Exception:
                         escribir_excepcion("Excepcion al intentar leer PQRs ")
-                elif opcion==3:
+                
+                elif opcion==4:
                     bandera2=1
                 else:
                     print("Numero fuera de rango")
@@ -223,7 +229,7 @@ def ejecucion_menu_principal():
                         escribir_excepcion("Excepcion al intentar realizar personalizacion para persona registrada ")
                 elif opcion==2:
                     try:
-                        personalizacion_persona_sin_registrarar(datos)
+                        personalizacion_persona_sin_registrar(datos)
                     except Exception:
                         escribir_excepcion("Excepcion al intentar realizar personalizacion para persona sin registrar ")
                 elif opcion==3:
@@ -258,8 +264,8 @@ def ejecucion_menu_principal():
             print("Numero fuera de rango")
             print("") 
 
-#try:
-while bandera==0:
+try:
+    while bandera==0:
         menu_login()
         opcion=socilitar_opcion()
         datos=cargar_datos_json(RUTA_DATOS_USUARIOS)
@@ -309,10 +315,10 @@ while bandera==0:
                             
                             
                     elif opcion==2:
-                        #try:
+                        try:
                             ejecucion_menu_principal()
-                        #except Exception:
-                            #escribir_excepcion("Excepcion al ejecutar menu principal ")
+                        except Exception:
+                            escribir_excepcion("Excepcion al ejecutar menu principal ")
                     elif opcion==3:
                         bandera2=1
                     else:
@@ -335,5 +341,5 @@ while bandera==0:
             print("Numero fuera de rango")
             print("")   
 
-#except Exception:
-    #escribir_excepcion("Excepcion al ejecutar el main ")
+except Exception:
+    escribir_excepcion("Excepcion al ejecutar el main ")
