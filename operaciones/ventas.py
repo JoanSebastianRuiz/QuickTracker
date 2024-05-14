@@ -11,8 +11,8 @@
 """
 
 from datetime import *
-from datos import *
-from validaciones import *
+from datos.manejo_datos import *
+from datos.validaciones import *
 
 
 def registrar_venta(datos):

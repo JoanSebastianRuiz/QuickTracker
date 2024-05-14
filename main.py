@@ -66,17 +66,18 @@ Dicho esto, se plantea la creación del sistema mencionado con las siguientes fu
         compra, cantidades, estado, etc.
         """
         
-from datos import *
-from validaciones import *
+from datos.manejo_datos import *
+from datos.validaciones import *
 from operaciones.productos import *
 from operaciones.clientes import *
 from operaciones.servicios import *
 from operaciones.ventas import *
 from operaciones.pqr import *
 from operaciones.excepciones import *
-from menus import *
+from datos.menus import *
 from operaciones.analisis_ventas import *
-from operaciones.promociones import *
+from operaciones.personalizacion_servicio import *
+from operaciones.reportes import *
 
 
 bandera=0
@@ -188,16 +189,29 @@ while bandera==0:
                 
     elif opcion==7:
             while bandera2==0:
-                menu_promociones()
+                menu_personalizacion_servicio()
                 opcion=socilitar_opcion()
                 datos=cargar_datos_json(RUTA_DATOS_VENTAS)
                 
                 if opcion==1:
-                    promocion_persona_sin_registrar(datos)
-               
-                elif opcion==4:
+                    personalizacion_persona_registrada(datos)
+                if opcion==2:
+                    personalizacion_persona_sin_registrarar(datos)
+                elif opcion==3:
                     bandera2=1
     elif opcion==8:
+            while bandera2==0:
+                menu_reportes()
+                opcion=socilitar_opcion()
+                if opcion==1:
+                    datos=cargar_datos_json(RUTA_DATOS_SERVICIOS)
+                    generar_reporte_servicios(datos)
+                if opcion==2:
+                    datos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
+                    generar_reporte_productos(datos)
+                elif opcion==3:
+                    bandera2=1
+    elif opcion==9:
         bandera=1
 
 

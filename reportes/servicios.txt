@@ -1,0 +1,31 @@
+codigo: 1
+nombre: Internet basico
+caracteristicas: 100 gb de velocidad
+precio: 80000
+clientes y su cantidad de compras: 
+-1095837983: 4
+
+codigo: 2
+nombre: Internet de fibra optica
+caracteristicas: 500 gb de velocidad
+precio: 100000
+clientes y su cantidad de compras: 
+-63325117: 1
+
+codigo: 3
+nombre: Plan pospago
+caracteristicas: minutos ilimitados e internet ilimitado
+precio: 50000
+clientes y su cantidad de compras: 
+-1034553983: 1
+-1095837983: 1
+-1091244383: 1
+
+codigo: 4
+nombre: Plan prepago
+caracteristicas: minutos ilimitados
+precio: 30000
+clientes y su cantidad de compras: 
+-63325117: 1
+-1095837983: 1
+

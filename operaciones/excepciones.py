@@ -1,5 +1,5 @@
 from datetime import *
-from datos import *
+from datos.manejo_datos import *
 
 def escribir_excepcion(cadena):
     fecha_hora=datetime.now()

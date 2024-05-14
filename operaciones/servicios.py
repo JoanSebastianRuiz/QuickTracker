@@ -5,7 +5,7 @@
         - Capacidad para agregar, modificar y eliminar servicios según sea necesario.
         - Registro de información detallada sobre cada servicio, incluyendo características, precios, entre otros.
 """
-from validaciones import *
+from datos.validaciones import *
 
 def agregar_servicio(datos):
     servicio={}
@@ -105,9 +105,13 @@ def leer_servicios(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                print(f"{llave}:")
+                print(f"{llave} y su cantidad de compras:")
+                cantidad_compras=valor.copy()
+                valor=set(valor)
+                valor=list(valor)
+                
                 for i in range(len(valor)):
-                    print(f"-{valor[i]}")
+                    print(f"-{valor[i]}: {cantidad_compras.count(valor[i])}")
                     
             else:
                 print(f"{llave}: {valor}")

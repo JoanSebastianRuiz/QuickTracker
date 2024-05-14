@@ -4,30 +4,30 @@ from datos.validaciones import *
 from datetime import *
 from operaciones.excepciones import *
 
-def agregar_cliente(datos):
-    cliente={}
+def agregar_usuario(datos):
+    usuario={}
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del cliente: ")
+        documento=input("Ingrese el documento del empleado: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True
     bandera=False
     
     if verificar_existencia_valor(datos,"documento",documento)==False:
-        cliente["documento"]=documento
+        usuario["documento"]=documento
         
         while bandera==False:
             nombre=input("Ingrese el nombre del cliente: ")
             if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
                 bandera=True
         bandera=False
-        cliente["nombre"]=nombre
+        usuario["nombre"]=nombre
 
         fecha_actual=datetime.now().strftime("%d-%m-%Y")
         fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
         while bandera==False:
-            fecha_nacimiento=input("Ingrese la fecha de nacimiento del cliente (formato dd-mm-aaaa): ")
+            fecha_nacimiento=input("Ingrese la fecha de nacimiento del usuario (formato dd-mm-aaaa): ")
             if validar_contiene_contenido(fecha_nacimiento)==True:
                 try:
                     fecha_nacimiento_formato=datetime.strptime(fecha_nacimiento,"%d-%m-%Y")
@@ -39,36 +39,36 @@ def agregar_cliente(datos):
                     print("Dato erroneo")
         
         bandera=False
-        cliente["fecha nacimiento"]=fecha_nacimiento
-        cliente["edad"] =edad   
+        usuario["fecha nacimiento"]=fecha_nacimiento
+        usuario["edad"] =edad   
             
         while bandera==False:
             departamento=input("Ingrese el departamento del cliente: ")
             if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
                 bandera=True
         bandera=False
-        cliente["departamento"]=departamento
+        usuario["departamento"]=departamento
         
         while bandera==False:
             ciudad=input("Ingrese la ciudad del cliente: ")
             if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
                 bandera=True
         bandera=False    
-        cliente["ciudad"]=ciudad
+        usuario["ciudad"]=ciudad
         
         while bandera==False:
             direccion=input("Ingrese la direccion del cliente: ")
             if validar_contiene_contenido(direccion)==True:
                 bandera=True
         bandera=False    
-        cliente["direccion"]=direccion
+        usuario["direccion"]=direccion
 
         while bandera==False:
             telefono=input("Ingrese el telefono de contacto del cliente:")
             if validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
                 bandera=True
         bandera=False      
-        cliente["telefono"]=telefono
+        usuario["telefono"]=telefono
 
         while bandera==False:
             imprimir_opciones_categoria_cliente()
@@ -78,14 +78,14 @@ def agregar_cliente(datos):
             elif posicion_categoria<1 or posicion_categoria>len(LISTA_CATEGORIA_CLIENTE):
                 print("Numero de opcion fuera de rango")
 
-        cliente["categoria_cliente"]=LISTA_CATEGORIA_CLIENTE[posicion_categoria-1]
+        usuario["categoria_cliente"]=LISTA_CATEGORIA_CLIENTE[posicion_categoria-1]
 
         print("El cliente se ha agregado correctamente")
-        datos.append(cliente)
+        datos.append(usuario)
         return datos
     
     else:
-        print("El documento ya esta registrado en la lista de clientes")
+        print("El documento ya esta registrado en la lista de usuarios")
         return datos
 
   
@@ -194,9 +194,3 @@ def eliminar_cliente(datos):
     else:
         print("El documento ingresado no se encuentra registrado en la lista de clientes")
         return datos
-
-def imprimir_opciones_categoria_cliente():  
-    print("Opciones de categoria de cliente: ")
-    for i in range(len(LISTA_CATEGORIA_CLIENTE)):
-            print(f"{i+1}. {LISTA_CATEGORIA_CLIENTE[i]}")
-

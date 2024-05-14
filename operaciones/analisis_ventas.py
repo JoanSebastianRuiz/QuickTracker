@@ -1,5 +1,5 @@
-from validaciones import *
-from datos import *
+from datos.validaciones import *
+from datos.manejo_datos import *
 
 #La empresa no puede identificar patrones de uso de servicios, preferencias de los clientes o áreas geográficas con mayor demanda
 def numero_ventas_articulo(datos):

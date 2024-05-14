@@ -1,12 +1,14 @@
 import json
 
-RUTA_DATOS_CLIENTES="Archivos/clientes.json"
-RUTA_DATOS_SERVICIOS="Archivos/servicios.json"
-RUTA_DATOS_PRODUCTOS="Archivos/productos.json"
-RUTA_DATOS_VENTAS="Archivos/ventas.json"
-RUTA_DATOS_PQR="Archivos/pqr.json"
-
+RUTA_DATOS_CLIENTES="archivos/clientes.json"
+RUTA_DATOS_SERVICIOS="archivos/servicios.json"
+RUTA_DATOS_PRODUCTOS="archivos/productos.json"
+RUTA_DATOS_VENTAS="archivos/ventas.json"
+RUTA_DATOS_PQR="archivos/pqr.json"
 RUTA_DATOS_EXCEPCIONES="Archivos/excepciones.txt"
+
+RUTA_REPORTE_PRODUCTOS="reportes/productos.txt"
+RUTA_REPORTE_SERVICIOS="reportes/servicios.txt"
 
 LISTA_CATEGORIA_CLIENTE=["nuevo","regular", "leal"]
 LISTA_PQR=["consulta de servicio al cliente", "reclamacion", "sugerencia"]
@@ -34,6 +36,11 @@ def subir_datos_txt(ruta,cadena):
     file=open(ruta,"a")
     file.write(cadena)
     file.close()
+
+def vaciar_datos_txt(ruta):
+    file=open(ruta,"w")
+    file.write("")
+    file.close
     
 #Lista de nombres de lista de diccionarios(json)
 def lista_valores_llave_json(datos,llave):

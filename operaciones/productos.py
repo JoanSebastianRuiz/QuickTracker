@@ -4,7 +4,7 @@
 compra, cantidades, estado, etc.
 
 """
-from validaciones import *
+from datos.validaciones import *
 
 def agregar_producto(datos):
     producto={}
@@ -132,9 +132,13 @@ def leer_productos(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                print(f"{llave}:")
+                print(f"{llave} y su cantidad de compras:")
+                cantidad_compras=valor.copy()
+                valor=set(valor)
+                valor=list(valor)
+                
                 for i in range(len(valor)):
-                    print(f"-{valor[i]}")
+                    print(f"-{valor[i]}: {cantidad_compras.count(valor[i])}")
                     
             else:
                 print(f"{llave}: {valor}")

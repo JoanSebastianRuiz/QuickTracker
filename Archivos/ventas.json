@@ -11,6 +11,39 @@
         "valor": "80000"
     },
     {
+        "codigo": 1,
+        "documento": "1095837983",
+        "fecha": "01-10-2023",
+        "hora": "01:21",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "tipo de venta": "servicio",
+        "articulo": "Internet basico",
+        "valor": "80000"
+    },
+    {
+        "codigo": 1,
+        "documento": "1095837983",
+        "fecha": "13-05-2022",
+        "hora": "01:21",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "tipo de venta": "servicio",
+        "articulo": "Internet basico",
+        "valor": "80000"
+    },
+    {
+        "codigo": 1,
+        "documento": "1095837983",
+        "fecha": "01-10-2021",
+        "hora": "01:21",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "tipo de venta": "servicio",
+        "articulo": "Internet basico",
+        "valor": "80000"
+    },
+    {
         "codigo": 2,
         "documento": "63325117",
         "fecha": "13-05-2024",
