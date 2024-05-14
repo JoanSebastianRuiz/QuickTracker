@@ -2,7 +2,14 @@ def validar_longitud_documento(cadena):
         if len(cadena)>=8 and len(cadena)<=10:
             return True
         else:
-            print("Longitud de documento invalida")
+            print("Longitud de documento invalida (8 a 10 numeros)")
+            return False
+
+def validar_longitud_contrasena(cadena):
+        if len(cadena)>=6 and len(cadena)<=10:
+            return True
+        else:
+            print("Longitud de contraseña invalida (6 a 10 caracteres)")
             return False
 
 def validar_contiene_contenido(cadena):

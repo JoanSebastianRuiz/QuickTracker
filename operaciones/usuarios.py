@@ -9,21 +9,29 @@ def agregar_usuario(datos):
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del empleado: ")
+        documento=input("Ingrese el documento del usuario: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True
     bandera=False
     
     if verificar_existencia_valor(datos,"documento",documento)==False:
         usuario["documento"]=documento
+        usuario["rol"]="empleado"
         
         while bandera==False:
-            nombre=input("Ingrese el nombre del cliente: ")
+            nombre=input("Ingrese el nombre del usuario: ")
             if validar_contiene_contenido(nombre)==True and validar_contiene_letras(nombre)==True:
                 bandera=True
         bandera=False
         usuario["nombre"]=nombre
-
+        
+        while bandera==False:
+            contrasena=input("Ingrese la contraseña del usuario: ")
+            if validar_contiene_contenido(contrasena)==True and validar_longitud_contrasena(contrasena)==True:
+                bandera=True
+        bandera=False
+        usuario["contrasena"]=nombre
+        
         fecha_actual=datetime.now().strftime("%d-%m-%Y")
         fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
         while bandera==False:
@@ -35,7 +43,7 @@ def agregar_usuario(datos):
                     edad=str(edad)
                     bandera=True
                 except Exception:
-                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento al cliente "+"\""+fecha_nacimiento+"\"")
+                    escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento del usuario "+"\""+fecha_nacimiento+"\"")
                     print("Dato erroneo")
         
         bandera=False
@@ -43,44 +51,34 @@ def agregar_usuario(datos):
         usuario["edad"] =edad   
             
         while bandera==False:
-            departamento=input("Ingrese el departamento del cliente: ")
+            departamento=input("Ingrese el departamento del usuario: ")
             if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
                 bandera=True
         bandera=False
         usuario["departamento"]=departamento
         
         while bandera==False:
-            ciudad=input("Ingrese la ciudad del cliente: ")
+            ciudad=input("Ingrese la ciudad del usuario: ")
             if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
                 bandera=True
         bandera=False    
         usuario["ciudad"]=ciudad
         
         while bandera==False:
-            direccion=input("Ingrese la direccion del cliente: ")
+            direccion=input("Ingrese la direccion del usuario: ")
             if validar_contiene_contenido(direccion)==True:
                 bandera=True
         bandera=False    
         usuario["direccion"]=direccion
 
         while bandera==False:
-            telefono=input("Ingrese el telefono de contacto del cliente:")
+            telefono=input("Ingrese el telefono de contacto del usuario:")
             if validar_contiene_contenido(telefono)==True and validar_contiene_numeros(telefono)==True:
                 bandera=True
         bandera=False      
         usuario["telefono"]=telefono
 
-        while bandera==False:
-            imprimir_opciones_categoria_cliente()
-            posicion_categoria=socilitar_opcion()
-            if posicion_categoria>=1 and posicion_categoria<=len(LISTA_CATEGORIA_CLIENTE) and validar_contiene_contenido(posicion_categoria)==True and validar_contiene_numeros(posicion_categoria)==True:
-                bandera=True
-            elif posicion_categoria<1 or posicion_categoria>len(LISTA_CATEGORIA_CLIENTE):
-                print("Numero de opcion fuera de rango")
-
-        usuario["categoria_cliente"]=LISTA_CATEGORIA_CLIENTE[posicion_categoria-1]
-
-        print("El cliente se ha agregado correctamente")
+        print("El usuario se ha agregado correctamente")
         datos.append(usuario)
         return datos
     
@@ -89,18 +87,18 @@ def agregar_usuario(datos):
         return datos
 
   
-def leer_clientes(datos):
+def leer_usuarios(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             print(f"{llave}: {valor}")
         print("")
 
 
-def actualizar_cliente(datos):
+def actualizar_usuario(datos):
     bandera=False
     
     while bandera==False:
-        documento=input("Ingrese el documento del cliente que quiere actualizar: ")
+        documento=input("Ingrese el documento del usuario que quiere actualizar: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True
     bandera=False
