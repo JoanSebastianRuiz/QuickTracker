@@ -63,6 +63,10 @@ def numero_ventas_ubicacion(datos):
     elif opcion==2:
         lista_productos_o_servicios=lista_valores_llave_json(datos_productos, "nombre")
 
+    lista_fechas=solicitar_fechas()
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
+    
     while bandera==False:
         print("Analizar el numerode ventas segun: ")
         print("1. Departamento")
@@ -150,6 +154,10 @@ def numero_ventas_rango_edad(datos):
     elif opcion==2:
         lista_productos_o_servicios=lista_valores_llave_json(datos_productos, "nombre")
 
+    lista_fechas=solicitar_fechas()
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
+    
     while bandera==False:
         print("Ver compras hechas por: ")
         print("1. Adolescentes (menor de 20 años)")
@@ -170,7 +178,7 @@ def numero_ventas_rango_edad(datos):
             for diccionario in datos:
                 documento=diccionario["documento"]
                 diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
-                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])<20:
+                if diccionario["articulo"]==nombre_servicio_o_producto and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final and int(diccionario_persona["edad"])<20:
                     cont+=1
             cont_servicios_o_productos.append(cont)
         print(f"{LISTA_EDADES[opcion-1]}:")
@@ -185,7 +193,7 @@ def numero_ventas_rango_edad(datos):
             for diccionario in datos:
                 documento=diccionario["documento"]
                 diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
-                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=20 and int(diccionario_persona["edad"])<=39:
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=20 and int(diccionario_persona["edad"])<=39 and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                     cont+=1
             cont_servicios_o_productos.append(cont)
         print(f"{LISTA_EDADES[opcion-1]}:")
@@ -200,7 +208,7 @@ def numero_ventas_rango_edad(datos):
             for diccionario in datos:
                 documento=diccionario["documento"]
                 diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
-                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=40 and int(diccionario_persona["edad"])<=60:
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>=40 and int(diccionario_persona["edad"])<=60 and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                     cont+=1
             cont_servicios_o_productos.append(cont)
         print(f"{LISTA_EDADES[opcion-1]}:")
@@ -215,11 +223,94 @@ def numero_ventas_rango_edad(datos):
             for diccionario in datos:
                 documento=diccionario["documento"]
                 diccionario_persona=ubicacion_valor(datos_clientes,"documento",documento)
-                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>60:
+                if diccionario["articulo"]==nombre_servicio_o_producto and int(diccionario_persona["edad"])>60 and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                     cont+=1
             cont_servicios_o_productos.append(cont)
         print(f"{LISTA_EDADES[opcion-1]}:")
         for i in range(len(cont_servicios_o_productos)):
             print(f"{lista_productos_o_servicios[i]}: {cont_servicios_o_productos[i]}")
         print("")
+
+def solicitar_fechas():
+    lista_retornar=[]
+    bandera=False
+    
+    while bandera==False:
+        print("Opciones de filtrado de fechas:")
+        print("1. Fecha inicial a fecha final ")
+        print("2. Fecha inicial hasta fecha actual")
+        print("3. actual")
+        
+        opcion=socilitar_opcion()
+        if opcion>=1 and opcion<=3 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+            bandera=True
+        elif opcion<1 or opcion>3:
+            print("Numero de opcion fuera de rango")  
+    bandera=False
+    fecha_actual=datetime.now().strftime("%d-%m-%Y")
+    fecha_actual_formato=datetime.strptime(fecha_actual,"%d-%m-%Y")
+    
+    if opcion==1:
+        bandera=False
+        while bandera==False:
+            
+            while bandera==False:
+                fecha_inicial=input("Ingrese la fecha inicial desde la cual quiere realizar el analisis (formato dd-mm-aaaa): ")
+                if validar_contiene_contenido(fecha_inicial)==True:
+                    try:
+                        fecha_inicial_formato=datetime.strptime(fecha_inicial,"%d-%m-%Y")
+                        bandera=True
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento del cliente "+"\""+fecha_inicial+"\"")
+            bandera=False
+
+            while bandera==False:
+                fecha_final=input("Ingrese la fecha final hasta la cual quiere realizar el analisis (formato dd-mm-aaaa): ")
+                if validar_contiene_contenido(fecha_final)==True:
+                    try:
+                        fecha_final_formato=datetime.strptime(fecha_final,"%d-%m-%Y")
+                        bandera=True
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento del cliente "+"\""+fecha_final+"\"")
+            bandera=False 
+              
+            if fecha_final_formato>fecha_inicial_formato:
+                bandera=True
+            else:
+                print("Fecha final es menor que fecha inicial")
+                
+        lista_retornar.append(fecha_inicial_formato)
+        lista_retornar.append(fecha_final_formato)
+    
+    elif opcion==2:
+        bandera=False
+        while bandera==False:
+            
+            while bandera==False:
+                fecha_inicial=input("Ingrese la fecha inicial desde la cual quiere realizar el analisis (formato dd-mm-aaaa): ")
+                if validar_contiene_contenido(fecha_inicial)==True:
+                    try:
+                        fecha_inicial_formato=datetime.strptime(fecha_inicial,"%d-%m-%Y")
+                        bandera=True
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar agregar fecha de nacimiento del cliente "+"\""+fecha_inicial+"\"")
+            bandera=False
+            fecha_final=fecha_actual_formato  
+              
+            if fecha_final>fecha_inicial_formato:
+                bandera=True
+            else:
+                print("Fecha actual es menor que fecha inicial")
+                
+        lista_retornar.append(fecha_inicial_formato)
+        lista_retornar.append(fecha_final)
+    
+    elif opcion==3:
+        fecha_inicial=fecha_actual_formato
+        lista_retornar.append(fecha_inicial)
+        fecha_final=fecha_actual_formato
+        lista_retornar.append(fecha_final)
+    
+    return lista_retornar    
+        
     

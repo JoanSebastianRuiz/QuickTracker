@@ -200,10 +200,10 @@ def ejecucion_menu_principal():
                     except Exception:
                         escribir_excepcion("Excepcion al intentar imprimir ventas por ubicacion ")
                 elif opcion==4:
-                    try:
+                    #try:
                         numero_ventas_rango_edad(datos)
-                    except Exception:
-                        escribir_excepcion("Excepcion al intentar imprimir ventas por rango de edad ")  
+                    #except Exception:
+                        #escribir_excepcion("Excepcion al intentar imprimir ventas por rango de edad ")  
                 elif opcion==5:
                     bandera2=1
                 else:

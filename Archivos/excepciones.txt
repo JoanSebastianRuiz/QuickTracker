@@ -4,3 +4,4 @@
 14-05-2024 08:08 Excepcion al intentar agregar producto 
 14-05-2024 08:12 Excepcion al ejecutar menu principal 
 14-05-2024 08:14 Excepcion al ejecutar el main 
+14-05-2024 09:33 Excepcion al intentar imprimir ventas por rango de edad 
