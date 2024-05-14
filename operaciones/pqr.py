@@ -15,6 +15,7 @@ def registrar_pqr(datos):
     bandera=False
     
     if verificar_existencia_valor(datos_clientes,"documento",documento)==True:
+        pqr["codigo"]=len(datos)+1
         pqr["documento"]=documento
         fecha_actual=datetime.now()
         pqr["fecha"]=fecha_actual.strftime("%d-%m-%Y")
@@ -27,7 +28,7 @@ def registrar_pqr(datos):
                 bandera=True
             elif posicion_lista_pqr<1 or posicion_lista_pqr>len(LISTA_PQR):
                 print("Numero de opcion fuera de rango")
-        pqr["tipo de pqr"]==LISTA_PQR[posicion_lista_pqr-1]
+        pqr["tipo de pqr"]=LISTA_PQR[posicion_lista_pqr-1]
         bandera=False
         
         while bandera==False:
@@ -45,12 +46,38 @@ def registrar_pqr(datos):
         return datos
 
 def leer_pqr(datos):
-    for diccionario in datos:
-        for llave, valor in diccionario.items():
-            print(f"{llave}: {valor}")
-        print("")
-   
+    bandera=False
     
+    while bandera==False:
+        imprimir_opciones_pqr()
+        posicion_lista_pqr=socilitar_opcion()
+        if posicion_lista_pqr>=1 and posicion_lista_pqr<=len(LISTA_PQR) and validar_contiene_contenido(posicion_lista_pqr)==True and validar_contiene_numeros(posicion_lista_pqr)==True:
+            bandera=True
+        elif posicion_lista_pqr<1 or posicion_lista_pqr>len(LISTA_PQR):
+            print("Numero de opcion fuera de rango")
+        
+    for diccionario in datos:
+        if diccionario["tipo de pqr"]==LISTA_PQR[posicion_lista_pqr-1]:
+            for llave, valor in diccionario.items():
+                print(f"{llave}: {valor}")
+            print("")
+   
+def eliminar_pqr(datos):
+    while bandera==False:
+        codigo=input("Ingrese el codigo del PQR a eliminar:")
+        if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
+            bandera=True
+    bandera=False
+    
+    if verificar_existencia_valor(datos,"codigo",codigo)==True:
+        diccionario=ubicacion_valor(datos,"codigo",codigo) 
+        datos.remove(diccionario)
+        print("El PQR se ha eliminado correctamente")
+        return datos
+    else:
+        print("El codigo ingresado no se encuentra registrado en la lista de PQRs")
+        return datos
+
 def imprimir_opciones_pqr():
     print("Opciones de PQR: ")
     for i in range(len(LISTA_PQR)):

@@ -1,5 +1,4 @@
 import json
-from operaciones.excepciones import *
 
 RUTA_DATOS_USUARIOS="archivos/usuarios.json"
 RUTA_DATOS_CLIENTES="archivos/clientes.json"
@@ -19,22 +18,16 @@ LISTA_DEPARTAMENTOS_CIUDADES={"Santander":["Bucaramanga","Floridablanca","Giron"
 
 
 def cargar_datos_json(ruta):
-    try:
         file=open(ruta)
         datos=json.load(file)
         file.close()
         return datos
-    except Exception:
-        escribir_excepcion("Excepcion al cargar datos json ")
 
 def subir_datos_json(ruta, lista):
-    try:
         informacion=json.dumps(lista, indent=4)
         file=open(ruta,"w")
         file.write(informacion)
         file.close()
-    except Exception:
-        escribir_excepcion("Excepcion al subir datos json ")
     
 def cargar_datos_txt(ruta):
     file=open(ruta)

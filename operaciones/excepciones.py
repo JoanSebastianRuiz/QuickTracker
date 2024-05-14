@@ -1,6 +1,5 @@
 from datetime import *
-from datos.manejo_datos import subir_datos_txt
-from datos.manejo_datos import RUTA_DATOS_EXCEPCIONES
+from datos.manejo_datos import *
 
 def escribir_excepcion(cadena):
     fecha_hora=datetime.now()

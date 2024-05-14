@@ -1,2 +1,6 @@
 13-05-2024 00:51 Excepcion al intentar agregar fecha de nacimiento al cliente "skjfsld"
 13-05-2024 23:51 Excepcion al intentar agregar fecha de nacimiento del cliente "ksdlsf"
+14-05-2024 08:08 Excepcion al intentar agregar producto 
+14-05-2024 08:08 Excepcion al intentar agregar producto 
+14-05-2024 08:12 Excepcion al ejecutar menu principal 
+14-05-2024 08:14 Excepcion al ejecutar el main 

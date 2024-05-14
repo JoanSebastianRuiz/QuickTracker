@@ -1,1 +1,13 @@
-[{}]
+[
+    {
+        "codigo": 1,
+        "nombre": "Motorola one macro",
+        "marca": "Motorola",
+        "precio": "500000",
+        "cantidad": "44",
+        "caracteristicas": "Camara macro, pantalla LCD IPS de 6.2 pulgadas, procesador MediaTek Helio P70",
+        "clientes": [
+            "1095837983"
+        ]
+    }
+]

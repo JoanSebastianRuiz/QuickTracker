@@ -68,10 +68,10 @@ def ejecucion_menu_principal():
                 datos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
                 datos_subir=datos
                 if opcion==1:
-                    try:                
+                    #try:                
                         datos_subir=agregar_producto(datos)
-                    except Exception:
-                        escribir_excepcion("Excepcion al intentar agregar producto ")
+                    #except Exception:
+                        #escribir_excepcion("Excepcion al intentar agregar producto ")
                 elif opcion==2:
                     try:
                         datos_subir=eliminar_producto(datos)
@@ -258,8 +258,8 @@ def ejecucion_menu_principal():
             print("Numero fuera de rango")
             print("") 
 
-try:
-    while bandera==0:
+#try:
+while bandera==0:
         menu_login()
         opcion=socilitar_opcion()
         datos=cargar_datos_json(RUTA_DATOS_USUARIOS)
@@ -309,10 +309,10 @@ try:
                             
                             
                     elif opcion==2:
-                        try:
+                        #try:
                             ejecucion_menu_principal()
-                        except Exception:
-                            escribir_excepcion("Excepcion al ejecutar menu principal ")
+                        #except Exception:
+                            #escribir_excepcion("Excepcion al ejecutar menu principal ")
                     elif opcion==3:
                         bandera2=1
                     else:
@@ -335,5 +335,5 @@ try:
             print("Numero fuera de rango")
             print("")   
 
-except Exception:
-    escribir_excepcion("Excepcion al ejecutar el main ")
+#except Exception:
+    #escribir_excepcion("Excepcion al ejecutar el main ")

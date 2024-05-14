@@ -110,7 +110,6 @@ def registrar_venta(datos):
             
         datos.append(venta)
         print("La venta se ha registrado correctamente")
-        print(venta)
         return datos
             
     else:

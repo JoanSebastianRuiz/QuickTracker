@@ -51,9 +51,10 @@ def socilitar_opcion():
     return int(opcion)
 
 def verificar_existencia_valor(datos,llave,valor):
-    for diccionario in datos:
-        if diccionario[llave]==valor:
-            return True
+    if len(datos)!=0:
+        for diccionario in datos:
+            if diccionario[llave]==valor:
+                return True
     return False
 
 def ubicacion_valor(datos,llave,valor):
