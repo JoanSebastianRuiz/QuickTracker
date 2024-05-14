@@ -18,22 +18,26 @@ def numero_ventas_articulo(datos):
         elif opcion<1 or opcion>2:
             print("Numero de opcion fuera de rango")  
 
+    lista_fechas=solicitar_fechas()
+    
     if opcion==1:
         lista_servicios=lista_valores_llave_json(datos_servicios, "nombre")
-        imprimir_ventas_totales_lista(lista_servicios, datos)
+        imprimir_ventas_totales_lista(lista_servicios, datos, lista_fechas)
     elif opcion==2:
         lista_productos=lista_valores_llave_json(datos_productos, "nombre")
-        imprimir_ventas_totales_lista(lista_productos, datos)
+        imprimir_ventas_totales_lista(lista_productos, datos, lista_fechas)
 
 
 def imprimir_ventas_totales(datos):
+    lista_fechas=solicitar_fechas()
+    
     datos_servicios=cargar_datos_json(RUTA_DATOS_SERVICIOS)
     lista_servicios=lista_valores_llave_json(datos_servicios, "nombre")
-    ventas_servicios=ventas_totales(lista_servicios, datos)
+    ventas_servicios=ventas_totales(lista_servicios, datos, lista_fechas)
     
     datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
     lista_productos=lista_valores_llave_json(datos_productos, "nombre")
-    ventas_productos=ventas_totales(lista_productos, datos)
+    ventas_productos=ventas_totales(lista_productos, datos, lista_fechas)
     
     print(f"Ventas totales de servicios: {ventas_servicios}")
     print(f"Ventas totales de productos: {ventas_productos}")
@@ -90,7 +94,7 @@ def numero_ventas_ubicacion(datos):
         for nombre_servicio_o_producto in lista_productos_o_servicios:
             cont=0
             for diccionario in datos:
-                if diccionario["articulo"]==nombre_servicio_o_producto and diccionario[tipo_analisis]==nombre_lugar:
+                if diccionario["articulo"]==nombre_servicio_o_producto and diccionario[tipo_analisis]==nombre_lugar and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                     cont+=1
             cont_servicios_o_productos.append(cont)
         print(f"{nombre_lugar}:")
@@ -100,13 +104,16 @@ def numero_ventas_ubicacion(datos):
     print("")
 
 
-def imprimir_ventas_totales_lista(lista, datos):
+def imprimir_ventas_totales_lista(lista, datos, lista_fechas):
     cont_opcion=[]
+    
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
     
     for nombre in lista:
         cont=0
         for diccionario in datos:
-            if diccionario["articulo"]==nombre:
+            if diccionario["articulo"]==nombre and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                 cont+=1
         cont_opcion.append(cont)
     
@@ -115,14 +122,17 @@ def imprimir_ventas_totales_lista(lista, datos):
     print("")
 
 
-def ventas_totales(lista, datos):
+def ventas_totales(lista, datos, lista_fechas):
     cont_opcion=[]
     cont_total=0
+    
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
     
     for nombre in lista:
         cont=0
         for diccionario in datos:
-            if diccionario["articulo"]==nombre:
+            if diccionario["articulo"]==nombre and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                 cont+=1
         cont_opcion.append(cont)
     
