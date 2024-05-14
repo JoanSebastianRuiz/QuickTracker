@@ -23,14 +23,14 @@ def registrar_venta(datos):
 
         while bandera==False:
             departamento=input("Ingrese el departamento de la venta: ")
-            if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True:
+            if validar_contiene_contenido(departamento)==True and validar_contiene_letras(departamento)==True and validar_departamento(departamento)==True:
                 bandera=True
         bandera=False
         venta["departamento"]=departamento
         
         while bandera==False:
             ciudad=input("Ingrese la ciudad de la venta: ")
-            if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True:
+            if validar_contiene_contenido(ciudad)==True and validar_contiene_letras(ciudad)==True and validar_ciudad(departamento,ciudad)==True:
                 bandera=True
         bandera=False    
         venta["ciudad"]=ciudad
@@ -70,21 +70,41 @@ def registrar_venta(datos):
             datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
             venta["tipo de venta"]="producto"
             
-            while bandera==False:
-                print("Opciones de producto: ")
-                imprimir_lista_valores_llave_json(datos_productos, "nombre")
-                posicion_producto=socilitar_opcion()
-                if posicion_producto>=1 and posicion_producto<=len(lista_valores_llave_json(datos_productos,"nombre")) and validar_contiene_contenido(posicion_producto)==True and validar_contiene_numeros(posicion_producto)==True:
-                    bandera=True
-                elif posicion_producto<1 or posicion_producto>len(lista_valores_llave_json(datos_productos,"nombre")):
-                    print("Numero de opcion fuera de rango")
+            bandera2=False
+            while bandera2==False:
+                while bandera==False:
+                    print("Opciones de producto: ")
+                    imprimir_lista_valores_llave_json(datos_productos, "nombre")
+                    posicion_producto=socilitar_opcion()
+                    if posicion_producto>=1 and posicion_producto<=len(lista_valores_llave_json(datos_productos,"nombre")) and validar_contiene_contenido(posicion_producto)==True and validar_contiene_numeros(posicion_producto)==True:
+                        bandera=True
+                    elif posicion_producto<1 or posicion_producto>len(lista_valores_llave_json(datos_productos,"nombre")):
+                        print("Numero de opcion fuera de rango")
+                bandera=False        
+                
+                nombre_producto=lista_valores_llave_json(datos_productos, "nombre")[posicion_producto-1]
+                diccionario=ubicacion_valor(datos_productos,"nombre",nombre_producto)
+                if int(diccionario["cantidad"])>0:
+                    bandera2=True
+                else:
+                    print("La cantidad del producto seleccionado es 0")
                     
-            bandera=False
-            
-            nombre_producto=lista_valores_llave_json(datos_productos, "nombre")[posicion_producto-1]
+                    while bandera==False:
+                        print("Opciones disponibles: ")
+                        print("1. Seleccionar otro producto")
+                        print("2. Cancelar venta")
+                        opcion=socilitar_opcion()
+                        if opcion==1:
+                            bandera=True
+                        elif opcion==2:
+                            return datos
+                        else:
+                            print("Opcion fuera de rango")
+                    bandera=False
+                       
             venta["articulo"]=nombre_producto
-            diccionario=ubicacion_valor(datos_productos,"nombre",nombre_producto)
             diccionario["clientes"].append(documento)
+            diccionario["cantidad"]=str(int(diccionario["cantidad"])-1)
             venta["valor"]=diccionario["precio"]
             subir_datos_json(RUTA_DATOS_PRODUCTOS,datos_productos)      
             

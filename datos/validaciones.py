@@ -1,4 +1,5 @@
 from operaciones.excepciones import *
+from datos.manejo_datos import *
 
 def validar_longitud_documento(cadena):
         if len(cadena)>=8 and len(cadena)<=10:
@@ -60,3 +61,16 @@ def ubicacion_valor(datos,llave,valor):
         if diccionario[llave]==valor:
             return diccionario
     
+def validar_departamento(departamento):
+    for llave in LISTA_DEPARTAMENTOS_CIUDADES.keys():
+        if llave==departamento:
+            return True
+    print("Departamento fuera de area de covertura")
+    return False
+
+def validar_ciudad(departamento, ciudad):
+    for nombre_ciudad in LISTA_DEPARTAMENTOS_CIUDADES[departamento]:
+        if nombre_ciudad==ciudad:
+            return True
+    print("Ciudad fuera de area de covertura")
+    return False
