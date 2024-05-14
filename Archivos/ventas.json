@@ -86,5 +86,16 @@
         "tipo de venta": "producto",
         "articulo": "Motorola one macro",
         "valor": "500000"
+    },
+    {
+        "codigo": 9,
+        "documento": "63325117",
+        "fecha": "14-05-2024",
+        "hora": "12:06",
+        "departamento": "Santander",
+        "ciudad": "Giron",
+        "tipo de venta": "producto",
+        "articulo": "Xiaomi redmi note 10",
+        "valor": "1000000"
     }
 ]

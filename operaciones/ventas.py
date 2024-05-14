@@ -1,6 +1,7 @@
 from datetime import *
 from datos.manejo_datos import *
 from datos.validaciones import *
+from operaciones.analisis_ventas import *
 
 
 def registrar_venta(datos):
@@ -130,25 +131,30 @@ def leer_ventas(datos):
         elif opcion<1 or opcion>3:
             print("Numero de opcion fuera de rango")   
     
+    lista_fechas=solicitar_fechas()
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
+    
     if opcion==1:
         for diccionario in datos:
-            if diccionario["tipo de venta"]=="servicio":
+            if diccionario["tipo de venta"]=="servicio" and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                 for llave, valor in diccionario.items():
                     print(f"{llave}: {valor}")
                 print("")
                 
     elif opcion==2:
         for diccionario in datos:
-            if diccionario["tipo de venta"]=="producto":
+            if diccionario["tipo de venta"]=="producto" and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
                 for llave, valor in diccionario.items():
                     print(f"{llave}: {valor}")
                 print("")
                 
     elif opcion==3:
         for diccionario in datos:
-            for llave, valor in diccionario.items():
-                print(f"{llave}: {valor}")
-            print("")        
+            if datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
+                for llave, valor in diccionario.items():
+                    print(f"{llave}: {valor}")
+                print("")        
 
 
 def eliminar_venta(datos):
@@ -158,6 +164,7 @@ def eliminar_venta(datos):
         codigo=input("Ingrese el codigo la venta que quiere eliminar: ")
         if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
             bandera=True   
+    codigo=int(codigo)
     
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo)

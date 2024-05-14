@@ -5,3 +5,8 @@
 14-05-2024 08:12 Excepcion al ejecutar menu principal 
 14-05-2024 08:14 Excepcion al ejecutar el main 
 14-05-2024 09:33 Excepcion al intentar imprimir ventas por rango de edad 
+14-05-2024 11:51 Excepcion al intentar actualizar producto 
+14-05-2024 11:56 Excepcion al intentar eliminar producto 
+14-05-2024 11:57 Excepcion al intentar eliminar producto 
+14-05-2024 11:58 Excepcion al intentar eliminar producto 
+14-05-2024 11:58 Excepcion al intentar eliminar producto 

@@ -53,11 +53,13 @@ def agregar_producto(datos):
         return datos
 
 def eliminar_producto(datos):
+    bandera=False
     while bandera==False:
         codigo=input("Ingrese el codigo del producto a eliminar:")
         if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
             bandera=True
     bandera=False
+    codigo=int(codigo)
     
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo) 
@@ -76,6 +78,7 @@ def actualizar_producto(datos):
             bandera=True
     bandera=False
     
+    codigo=int(codigo)
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo)    
         diccionario["codigo"]=codigo

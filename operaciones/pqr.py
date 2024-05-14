@@ -1,6 +1,7 @@
 from datos.manejo_datos import *
 from datetime import *
 from datos.validaciones import *
+from operaciones.analisis_ventas import *
 
 
 def registrar_pqr(datos):
@@ -9,7 +10,7 @@ def registrar_pqr(datos):
     datos_clientes=cargar_datos_json(RUTA_DATOS_CLIENTES)
     
     while bandera==False:
-        documento=input("Ingrese el documento del usuario con el que quiere registrar el PQR: ")
+        documento=input("Ingrese el documento del cliente con el que registrara el PQR: ")
         if validar_longitud_documento(documento)==True and validar_contiene_contenido(documento)==True and validar_contiene_numeros(documento)==True:
             bandera=True
     bandera=False
@@ -55,19 +56,25 @@ def leer_pqr(datos):
             bandera=True
         elif posicion_lista_pqr<1 or posicion_lista_pqr>len(LISTA_PQR):
             print("Numero de opcion fuera de rango")
-        
+    
+    lista_fechas=solicitar_fechas()
+    fecha_inicial=lista_fechas[0]
+    fecha_final=lista_fechas[1]
+       
     for diccionario in datos:
-        if diccionario["tipo de pqr"]==LISTA_PQR[posicion_lista_pqr-1]:
+        if diccionario["tipo de pqr"]==LISTA_PQR[posicion_lista_pqr-1] and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")>=fecha_inicial and datetime.strptime(diccionario["fecha"],"%d-%m-%Y")<=fecha_final:
             for llave, valor in diccionario.items():
                 print(f"{llave}: {valor}")
             print("")
    
 def eliminar_pqr(datos):
+    bandera=False
     while bandera==False:
         codigo=input("Ingrese el codigo del PQR a eliminar:")
         if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
             bandera=True
     bandera=False
+    codigo=int(codigo)
     
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo) 

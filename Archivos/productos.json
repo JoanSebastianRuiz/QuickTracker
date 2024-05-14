@@ -9,5 +9,25 @@
         "clientes": [
             "1095837983"
         ]
+    },
+    {
+        "codigo": 2,
+        "nombre": "Samsung galaxy a20",
+        "marca": "Samsung",
+        "precio": "700000",
+        "cantidad": "100",
+        "caracteristicas": " pantalla Infinity-V de 6.4 pulgadas, procesador Exynos 7884,  bater\u00c3\u00ada de 4,000 mAh",
+        "clientes": []
+    },
+    {
+        "codigo": 3,
+        "nombre": "Xiaomi redmi note 10",
+        "marca": "Xiaomi",
+        "precio": "1000000",
+        "cantidad": "149",
+        "caracteristicas": "Pantalla AMOLED de 6.43 pulgadas,  bater\u00c3\u00ada de 5,000 mAh, procesador Qualcomm Snapdragon 678",
+        "clientes": [
+            "63325117"
+        ]
     }
 ]

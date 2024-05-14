@@ -68,10 +68,10 @@ def ejecucion_menu_principal():
                 datos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
                 datos_subir=datos
                 if opcion==1:
-                    #try:                
+                    try:                
                         datos_subir=agregar_producto(datos)
-                    #except Exception:
-                        #escribir_excepcion("Excepcion al intentar agregar producto ")
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar agregar producto ")
                 elif opcion==2:
                     try:
                         datos_subir=eliminar_producto(datos)
@@ -166,7 +166,7 @@ def ejecucion_menu_principal():
                         datos_subir=registrar_pqr(datos)
                     except Exception:
                         escribir_excepcion("Excepcion al intentar registrar PQR ")
-                if opcion==2:
+                elif opcion==2:
                     try:
                         leer_pqr(datos)
                     except Exception:
@@ -176,7 +176,7 @@ def ejecucion_menu_principal():
                 else:
                     print("Numero fuera de rango")
                     print("") 
-            subir_datos_json(RUTA_DATOS_PQR, datos_subir)    
+                subir_datos_json(RUTA_DATOS_PQR, datos_subir)    
 
         elif opcion==6:
             while bandera2==0:
@@ -200,10 +200,10 @@ def ejecucion_menu_principal():
                     except Exception:
                         escribir_excepcion("Excepcion al intentar imprimir ventas por ubicacion ")
                 elif opcion==4:
-                    #try:
+                    try:
                         numero_ventas_rango_edad(datos)
-                    #except Exception:
-                        #escribir_excepcion("Excepcion al intentar imprimir ventas por rango de edad ")  
+                    except Exception:
+                        escribir_excepcion("Excepcion al intentar imprimir ventas por rango de edad ")  
                 elif opcion==5:
                     bandera2=1
                 else:

@@ -39,11 +39,13 @@ def agregar_servicio(datos):
         return datos
 
 def eliminar_servicio(datos):
+    bandera=False
     while bandera==False:
         codigo=input("Ingrese el codigo del servicio a eliminar:")
         if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
             bandera=True
     bandera=False
+    codigo=int(codigo)
     
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo) 
@@ -61,6 +63,7 @@ def actualizar_servicio(datos):
         if validar_contiene_contenido(codigo)==True and validar_contiene_numeros(codigo)==True:
             bandera=True
     bandera=False
+    codigo=int(codigo)
     
     if verificar_existencia_valor(datos,"codigo",codigo)==True:
         diccionario=ubicacion_valor(datos,"codigo",codigo)    

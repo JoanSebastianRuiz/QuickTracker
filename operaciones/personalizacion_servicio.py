@@ -72,7 +72,7 @@ def personalizacion_persona_registrada(datos):
                     print(f"{llave}: {valor}") 
             print("")
 
-        print("Estas son las compras que ha realizado el usuario: ")
+        print("Ademas, estas son las compras que ha realizado el usuario: ")
         
         for diccionario in datos_servicios:
             for llave, valor in diccionario.items():
@@ -85,7 +85,6 @@ def personalizacion_persona_registrada(datos):
                         if valor[i]==documento:
                             print(f"-{diccionario["nombre"]}: {cantidad_compras.count(valor[i])}")
                         
-        
     else:
         print("El documento no esta registrado en la lista de clientes")
     

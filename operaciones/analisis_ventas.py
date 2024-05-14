@@ -1,7 +1,7 @@
 from datos.validaciones import *
 from datos.manejo_datos import *
 
-#La empresa no puede identificar patrones de uso de servicios, preferencias de los clientes o áreas geográficas con mayor demanda
+
 def numero_ventas_articulo(datos):
     bandera=False
     datos_productos=cargar_datos_json(RUTA_DATOS_PRODUCTOS)
@@ -249,7 +249,7 @@ def solicitar_fechas():
         print("Opciones de filtrado de fechas:")
         print("1. Fecha inicial a fecha final ")
         print("2. Fecha inicial hasta fecha actual")
-        print("3. actual")
+        print("3. Fecha actual")
         
         opcion=socilitar_opcion()
         if opcion>=1 and opcion<=3 and validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
