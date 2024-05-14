@@ -17,9 +17,9 @@ nombre: Plan pospago
 caracteristicas: minutos ilimitados e internet ilimitado
 precio: 50000
 clientes y su cantidad de compras: 
+-1091244383: 1
 -1034553983: 1
 -1095837983: 1
--1091244383: 1
 
 codigo: 4
 nombre: Plan prepago

@@ -1,3 +1,5 @@
+from operaciones.excepciones import *
+
 def validar_longitud_documento(cadena):
         if len(cadena)>=8 and len(cadena)<=10:
             return True
@@ -37,9 +39,12 @@ def validar_contiene_numeros(cadena):
 def socilitar_opcion():
     bandera=False
     while bandera==False:
-        opcion=input("Ingrese el numero de la opcion que desea seleccionar: ")
-        if validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
-            bandera=True
+        try:
+            opcion=input("Ingrese el numero de la opcion que desea seleccionar: ")
+            if validar_contiene_contenido(opcion)==True and validar_contiene_numeros(opcion)==True:
+                bandera=True
+        except Exception:
+            escribir_excepcion("Excepcion al solicitar opcion ")
 
     print("")
     return int(opcion)

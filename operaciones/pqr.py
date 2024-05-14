@@ -1,10 +1,3 @@
-"""
-    **Seguimiento del Historial de Usuarios:**
-
-        - Registro y almacenamiento de servicios utilizados por cada usuario.
-        - Seguimiento de las interacciones de los usuarios con la empresa, como consultas de servicio al cliente, reclamaciones
-        y sugerencias.
-"""
 from datos.manejo_datos import *
 from datetime import *
 from datos.validaciones import *

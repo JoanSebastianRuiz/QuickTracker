@@ -1,15 +1,3 @@
-"""
-    - **Falta de Análisis de Datos**: La ausencia de un sistema de registro adecuado dificulta la recopilación y análisis 
-    de datos sobre el comportamiento de los usuarios y las tendencias de consumo. La empresa no puede identificar patrones de 
-    uso de servicios, preferencias de los clientes o áreas geográficas con mayor demanda, lo que limita su capacidad para tomar
-    decisiones estratégicas informadas.
-
-    - **Ventas**: la ausencia de un sistema que permita identificar y hacer seguimiento a los productos que ofrece y las ventas
-    de los mismos, Claro enfrenta dificultades para llevar un registro completo de las facturas (ventas) donde se pueda 
-    identificar que productos se han han vendido, cuales clientes han sido los que mas han comprado, etc.
-
-"""
-
 from datetime import *
 from datos.manejo_datos import *
 from datos.validaciones import *

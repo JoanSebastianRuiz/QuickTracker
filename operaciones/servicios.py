@@ -1,10 +1,3 @@
-"""
-    **Módulo de Gestión de Servicios:**
-
-        - Operaciones CRUD para cada tipo de servicio ofrecido, como Internet de Fibra Óptica, planes pospago, prepago, etc.
-        - Capacidad para agregar, modificar y eliminar servicios según sea necesario.
-        - Registro de información detallada sobre cada servicio, incluyendo características, precios, entre otros.
-"""
 from datos.validaciones import *
 
 def agregar_servicio(datos):

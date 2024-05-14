@@ -1,9 +1,3 @@
-"""
-- Registro de productos y servicios basados en sus características necesarias para que los empleados puedan ofrecerlos.
-- Registro de cada una de las ventas, tanto de servicios como de productos. Así como, un registro de fechas de 
-compra, cantidades, estado, etc.
-
-"""
 from datos.validaciones import *
 
 def agregar_producto(datos):

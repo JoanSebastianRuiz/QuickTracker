@@ -1,4 +1,5 @@
 import json
+from operaciones.excepciones import *
 
 RUTA_DATOS_USUARIOS="archivos/usuarios.json"
 RUTA_DATOS_CLIENTES="archivos/clientes.json"
@@ -17,16 +18,22 @@ LISTA_EDADES=["Adolescentes (menor de 20 años)", "Adultos jóvenes (20-39 años
 
 
 def cargar_datos_json(ruta):
-    file=open(ruta)
-    datos=json.load(file)
-    file.close()
-    return datos
+    try:
+        file=open(ruta)
+        datos=json.load(file)
+        file.close()
+        return datos
+    except Exception:
+        escribir_excepcion("Excepcion al cargar datos json ")
 
 def subir_datos_json(ruta, lista):
-    informacion=json.dumps(lista, indent=4)
-    file=open(ruta,"w")
-    file.write(informacion)
-    file.close()
+    try:
+        informacion=json.dumps(lista, indent=4)
+        file=open(ruta,"w")
+        file.write(informacion)
+        file.close()
+    except Exception:
+        escribir_excepcion("Excepcion al subir datos json ")
     
 def cargar_datos_txt(ruta):
     file=open(ruta)
@@ -35,7 +42,7 @@ def cargar_datos_txt(ruta):
 
 def subir_datos_txt(ruta,cadena):
     file=open(ruta,"a")
-    file.write(cadena)
+    file.write(cadena+"\n")
     file.close()
 
 def vaciar_datos_txt(ruta):

@@ -6,21 +6,21 @@ def generar_reporte_productos(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                cadena=llave+" y su cantidad de compras: "+"\n"
+                cadena=llave+" y su cantidad de compras: "
                 subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
                 cantidad_compras=valor.copy()
                 valor=set(valor)
                 valor=list(valor)
                 
                 for i in range(len(valor)):
-                    cadena="-"+valor[i]+": "+str(cantidad_compras.count(valor[i]))+"\n"
+                    cadena="-"+valor[i]+": "+str(cantidad_compras.count(valor[i]))
                     subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
                
             else:
-                cadena=llave+": "+valor+"\n"
+                cadena=llave+": "+valor
                 subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
                 
-        cadena=""+"\n"
+        cadena=""
         subir_datos_txt(RUTA_REPORTE_PRODUCTOS,cadena)
         
     print("El reporte se ha generado correctamente")
@@ -33,21 +33,21 @@ def generar_reporte_servicios(datos):
     for diccionario in datos:
         for llave, valor in diccionario.items():
             if llave=="clientes":
-                cadena=llave+" y su cantidad de compras: "+"\n"
+                cadena=llave+" y su cantidad de compras: "
                 subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
                 cantidad_compras=valor.copy()
                 valor=set(valor)
                 valor=list(valor)
                 
                 for i in range(len(valor)):
-                    cadena="-"+valor[i]+": "+str(cantidad_compras.count(valor[i]))+"\n"
+                    cadena="-"+valor[i]+": "+str(cantidad_compras.count(valor[i]))
                     subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
                     
             else:
-                cadena=llave+": "+valor+"\n"
+                cadena=llave+": "+valor
                 subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
                 
-        cadena=""+"\n"
+        cadena=""
         subir_datos_txt(RUTA_REPORTE_SERVICIOS,cadena)
     
     print("El reporte se ha generado correctamente")
