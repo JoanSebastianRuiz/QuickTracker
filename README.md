@@ -39,6 +39,32 @@ En seguida, descomprimir el archivo, abrir el proyecto en Visual Studio Code, se
 
 ### Módulos 🔩
 
+El código del proyecto se organiza en cuatro módulos, que son:
+
+- Archivos
+
+En este módulo se encuentran todos los JSON que contienen la información de los clientes, PQR, productos, servicios, usuarios y ventas. Además de un archivo txt donde se registran las excepciones que ocurran durante la ejecución del proyecto.
+
+![image](https://github.com/JoanSebastianRuiz/QuickTracker/assets/166556013/016c3d34-3fe9-44cc-abc9-83b7dd1c61da)
+
+- Datos
+
+Acá se pueden encontrar todas las funciones que permiten subir y bajar datos de los JSON y archivos txt (manejo_datos), los menús que se le muestran al usuario al elegir cada opción y las validaciones que se hacen cuando los usuarios ingresan datos.
+
+![image](https://github.com/JoanSebastianRuiz/QuickTracker/assets/166556013/02614234-f954-42a4-9206-a23c56af5ef1)
+
+- Operaciones
+
+En este módulo se encuentran todas las funciones que se ejecutan cuando el usuario elige una opción de algún menú, que igualmente se encuentran ordenadas por archivos.
+
+![image](https://github.com/JoanSebastianRuiz/QuickTracker/assets/166556013/161349cb-a6e5-4c5e-8f61-e736e693fa68)
+
+- Reportes
+
+Por último, acá se encuentran los reportes que se generan de los productos o servicios con su información relacionada.
+
+![image](https://github.com/JoanSebastianRuiz/QuickTracker/assets/166556013/78e71acb-81dc-4fe5-b484-c215e6007a7a)
+
 ### Uso ⌨️
 
 El proyecto presenta un menu principal donde se debe elegir el tipo de usuario
