@@ -1,6 +1,6 @@
 # QuickTracker
 
-Backend para la gestión de servicios y ventas de equipos de una empresa de comunicaciones que permite un sistema integral de registro y seguimiento
+Backend para la gestión de servicios y productos de una empresa de comunicaciones que permite un sistema integral de registro y seguimiento.
 
 
 ## Tabla de contenido 📋
